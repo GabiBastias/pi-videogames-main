@@ -1,0 +1,19 @@
+.divHome{
+    border: 2px solid blue;
+    display: flex;
+    left: 100px;
+    right: 100px;
+    position: absolute;
+    flex-wrap: wrap;
+}
+
+.ulCards{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* grid-template-rows: 20rem 20rem;
+    grid-template-columns: 20rem 20rem 20rem 20rem 20rem; */
+    align-items: center;
+    justify-content: center;
+    grid-gap: 20px;
+}

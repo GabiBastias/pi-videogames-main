@@ -1,0 +1,42 @@
+.divNav{
+    position: fixed;
+    border: 1px solid black;
+    width: 100px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.burguer{
+    display: none;
+}
+
+@media screen and (max-width: 550px){
+    .burguer{
+        display: block;
+    }
+
+    .divNav{
+        display: none;
+    }
+}
+
+.ulNav{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    & button{
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        cursor: pointer;
+        /* border-style: none; */
+    }
+}
