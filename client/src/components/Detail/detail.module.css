@@ -1,0 +1,46 @@
+.divDetail{
+    display: flex;
+    position: absolute;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid greenyellow;
+    border-radius: 20%;
+    margin: 0rem;
+    padding: 1rem;
+    left: 100px;
+    gap: 1rem;
+    width: 93%;
+    height: 93%;
+
+}
+
+.imgDetail{
+    border-radius: 5px;
+    width: 60rem;
+    height: auto;
+}
+
+.divInfo {  display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 3rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "name name"
+      "platforms genres"
+      "platforms genres";
+}
+
+.platforms{ 
+    grid-area: platforms;
+}
+
+.genres{
+    grid-area: genres;
+}
+
+.name{
+    grid-area: name;
+}

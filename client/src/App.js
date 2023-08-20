@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home';
 import Landing from './components/Landing/Landing';
@@ -8,10 +8,13 @@ import Form from './components/Form/Form';
 
 
 function App() {
-
+  const {pathname} = useLocation();
+  // console.log(pathname);
   return (
     <div className="App">
-      <Nav/>
+      {
+        (pathname !== '/') ? <Nav /> : null
+      }
       <Routes>
         <Route
           path='/'
@@ -19,15 +22,15 @@ function App() {
           />
         <Route
           path='/home'
-          element={<Home/>}
+          element={<Home />}
           />
         <Route
-          path='/detail'
-          element={<Detail/>}
+          path='/detail/:id'
+          element={<Detail />}
           />
         <Route
           path='/form'
-          element={<Form/>}
+          element={<Form />}
           />
       </Routes>
     </div>

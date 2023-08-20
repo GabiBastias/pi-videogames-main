@@ -1,0 +1,17 @@
+.divSearchBar{
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.inputSearch{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: auto;
+    height: 2rem;
+    border-radius: 3rem;
+    color: white;
+}
+
+.buttonSearch{
+    margin: 1rem;
+}

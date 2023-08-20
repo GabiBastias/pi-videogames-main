@@ -1,7 +1,8 @@
-import { ALL_GAMES } from "../actions/action-types";
+import { ALL_GAMES, ALL_GENRES } from "../actions/action-types";
 
 const initialState = {
-    videogames: []
+    videogames: [],
+    genres: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -9,9 +10,13 @@ const reducer = (state = initialState, action) => {
         case ALL_GAMES:
             return {
                 ...state,
-                videogames : [...action.payload]
+                videogames: [...action.payload]
             }
-    
+        case ALL_GENRES:
+            return {
+                ...state,
+                genres: [...action.payload]
+            }
         default:
             return state;
     }

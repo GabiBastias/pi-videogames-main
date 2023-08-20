@@ -5,6 +5,7 @@
     right: 100px;
     position: absolute;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .ulCards{
