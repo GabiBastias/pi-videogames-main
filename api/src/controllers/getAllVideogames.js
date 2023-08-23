@@ -8,8 +8,7 @@ const getAllVideogames = async(req, res) => {
     try {
         if (name) {
             const nameGames = [];
-            const results = (await axios(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)).data.results;
-            const dbGames = await Videogame.findOne({
+            const dbGames = await Videogame.findAll({
                 where: { 
                     name: {
                         [Op.iLike]: '%' + name + '%'
@@ -18,38 +17,62 @@ const getAllVideogames = async(req, res) => {
             });
             
             if (dbGames) {
-                let gameDB = {
-                    id: dbGames.id,
-                    name: dbGames.name,
-                    description: dbGames.description,
-                    platforms: dbGames.platforms.map(plat => plat.platform.name),
-                    image: dbGames.image,
-                    releaseDate: dbGames.released,
-                    rating: dbGames.rating,
-                    genres: dbGames.genres.map(gen => gen.name)
-                }
-                nameGames.push(gameDB)
+                dbGames.map((dbGame) => {
+                    let gameDB = {
+                        id: dbGame.id,
+                        name: dbGame.name,
+                        description: dbGame.description,
+                        platforms: dbGame.platforms,
+                        image: dbGame.image,
+                        releaseDate: dbGame.released,
+                        rating: dbGame.rating,
+                        genres: dbGame.genres.map(gen => gen.name)
+                    }
+                    nameGames.push(gameDB)
+                })   
             }
-            results.map(async(game) => {
-                let title = {
-                    id: game.id,
-                    name: game.name,
-                    description: game.description || 'Description not available.',
-                    platforms: game.platforms.map(plat => plat.platform.name),
-                    image: game.background_image,
-                    releaseDate: game.released,
-                    rating: game.rating,
-                    genres: game.genres.map(gen => gen.name)
-                }
-                nameGames.push(title)
-            });
+
+            const nameGamesLength = nameGames.length
+            const results = (await axios(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}&page_size=${15-nameGamesLength}`)).data.results;
+            
+            if (results) {
+                results.map(async(game) => {
+                    let title = {
+                        id: game.id,
+                        name: game.name,
+                        description: game.description || 'Description not available.',
+                        platforms: game.platforms?.map(plat => plat.platform.name),
+                        image: game.background_image,
+                        releaseDate: game.released,
+                        rating: game.rating,
+                        genres: game.genres.map(gen => gen.name)
+                    }
+                    nameGames.push(title)
+                });
+            }
             return res.status(201).json(nameGames);
         } else {
             const gamesResults = [];
+            const dbGames = await Videogame.findAll({include: [Genres]})
+            if (dbGames) {
+                dbGames.map((game) => {
+                    let gameDB = {
+                        id: game.id,
+                        name: game.name,
+                        description: game.description,
+                        platforms: game.platforms,
+                        image: game.image,
+                        releaseDate: game.releaseDate,
+                        rating: game.rating,
+                        genres: game.genres.map(gen => gen.name)
+                    };
+                    gamesResults.unshift(gameDB)
+                })
+            }
             const gamesAPI = `https://api.rawg.io/api/games?key=${API_KEY}`;
-            for (let i = 0; i < 10; i++) {
-                let results = (await axios(gamesAPI)).data.results;
-                const dataGames = results.map((game) => {
+            for (let i = 0; i < 3; i++) {
+                let results = (await axios(`${gamesAPI}&page=${i+1}&page_size=33`)).data.results;
+                results.map((game) => {
                     let title = {
                         id: game.id,
                         name: game.name,
@@ -60,10 +83,10 @@ const getAllVideogames = async(req, res) => {
                         rating: game.rating,
                         genres: game.genres.map(gen => gen.name)
                     }
-                    return title;
+                    gamesResults.push(title);
                 });
-                return res.status(200).json(dataGames);
             }
+            return res.status(200).json(gamesResults);
         }
         
     } catch (error) {

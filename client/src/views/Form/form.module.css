@@ -1,0 +1,12 @@
+.divForm{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    left: 100px;
+    border: 1px solid green;
+    padding: 2rem;
+}

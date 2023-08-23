@@ -10,8 +10,8 @@ const validation = (data) => {
         errors.name = "The name must contains letters, numbers and spaces only";
     }
 
-    if (data.description.length < 100) {
-        errors.description = "Description must be longer";
+    if (data.platforms.length < 0) {
+        errors.platforms = "Please add at least one platform"
     }
 
     if (!data.releaseDate) {
@@ -22,10 +22,14 @@ const validation = (data) => {
         errors.rating = "This input can't be empty";
     }
 
-    if (!data.imageURL) {
-        errors.imageURL = "This input can't be empty";
-    } else if (!imageURLRegex.test(data.imageURL)){
-        errors.imageURL = 'Image URL is not valid';
+    if (!data.image) {
+        errors.image = "This input can't be empty";
+    } else if (!imageURLRegex.test(data.image)){
+        errors.image = 'Image URL is not valid';
+    }
+
+    if (data.genres.length === 0) {
+        errors.genres = 'Please choose at least one genre'
     }
 
     return errors;

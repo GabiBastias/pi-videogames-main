@@ -3,24 +3,21 @@ const { Videogame, Genres } = require('../db');
 const createVideogame = async(req, res) => {
     const { name, description, platforms, image, releaseDate, rating, genres } = req.body;
     try {
-        if (!name || !description || !platforms || !image || !releaseDate || !rating || !genres) {
+        if (!name || !platforms || !image || !releaseDate || !rating || !genres) {
             return res.status(404).send('Missing data.')
         } else {
-            const newVideogame = await Videogame.create({ name, description, platforms, image, releaseDate, rating });
+            const newVideogame = await Videogame.build({ name, description: description || 'Description not available.', platforms, image, releaseDate, rating });
+            newVideogame.save();
             for (const genre of genres) {
                 const genreName = await Genres.findOne({ where: { name: genre.name } });
                 if (genreName) {
                     await newVideogame.addGenres(genreName);
                 }
             }
-            // genres.forEach(async(gen) => {
-            //     let genreName = await Genres.findOne({ where: { name: gen.name }});
-            //     await newVideogame.addGenres(genreName);
-            // });
             res.status(200).json(newVideogame);
         }
     } catch (error) {
-        return res.status(404).json({error: error.message})    
+        return res.status(500).json({error: error.message})    
     }
 }
 
