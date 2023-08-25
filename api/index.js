@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 const HOST = 3001;
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ alter: true }).then(() => {
   server.listen(HOST, () => {
     console.log(`Server listening at ${HOST}`); // eslint-disable-line no-console
   });

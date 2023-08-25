@@ -1,14 +1,15 @@
 const axios = require('axios');
 const { API_KEY } = process.env;
 const { Genres } = require('../db');
-let dataBase = null;
+let dataLoad = false;
 
 const getGenres = async(req, res) => {
     // console.log(dataBase);
     try {
-        const results = (await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)).data.results;
-        if (!dataBase) {
+        if (!dataLoad) {
+            const results = (await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)).data.results;
             dataBase = await Genres.bulkCreate(results);
+            dataLoad = true;
         }
         return res.status(200).json(dataBase);
     } catch (error) {
