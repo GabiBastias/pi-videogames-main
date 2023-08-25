@@ -1,20 +1,59 @@
+  .videoBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+  
 .divHome{
-    border: 2px solid blue;
     display: flex;
     left: 100px;
     right: 100px;
-    position: absolute;
+    position: inherit;
     flex-wrap: wrap;
     justify-content: center;
+
+    & video {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+    }
 }
 
 .ulCards{
+    top: 5rem;
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* grid-template-rows: 20rem 20rem;
-    grid-template-columns: 20rem 20rem 20rem 20rem 20rem; */
-    align-items: center;
+    position: relative;
     justify-content: center;
     grid-gap: 20px;
 }
+
+.divSelect{
+    position: relative;
+    flex-direction: column;
+    top: 1rem;
+    right: -6rem;
+    display: flex;    
+}
+.select{
+    box-shadow: rgba(108, 0, 85, 0.9) 1px 5px 15px, rgba(0, 0, 0, 0.521) 1px 5px 15px;
+    background-color: transparent;
+    border-radius: .375em;
+    margin: 0.3rem;
+    color: white;
+    border: none;
+    &:hover{
+        background: transparent;
+        background-color: transparent;
+    }
+    & option{
+        color: black;
+    }        
+}
+    

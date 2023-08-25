@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import validation from "./validation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from './form.module.css';
+import { postGame } from "../../redux/actions/actions";
 
-const Form = ({create}) => {
+const Form = () => {
     const genres = useSelector(state => state.genres);
     const [selectedGenres, setSelectedGenres] = useState([]);
+    const dispatch = useDispatch();
     useEffect(() => {
         if (genres) {
             setSelectedGenres(genres);
@@ -58,7 +60,7 @@ const Form = ({create}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        create(newGame);
+        dispatch(postGame(newGame))
         setNewGame({
             name: "",
             description: "",
@@ -136,7 +138,6 @@ const Form = ({create}) => {
                         min="0"
                         max="100"
                         name="rating"
-                        // value={newGame.rating}
                         onChange={handleChange}
                     />
                     <br />

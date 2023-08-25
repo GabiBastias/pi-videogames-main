@@ -5,38 +5,32 @@ import Landing from './views/Landing/Landing';
 import Nav from './components/Nav/Nav';
 import Detail from './views/Detail/Detail';
 import Form from './views/Form/Form';
-import axios from 'axios';
+// import axios from 'axios';
 import { allGames, allGenres } from './redux/actions/actions';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import Loader from './components/Loader/Loader';
 
 
 function App() {
   const {pathname} = useLocation();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
       dispatch(allGenres());
       dispatch(allGames());
-  },[dispatch])
-
-  const createGame = async(game) => {
-    const petition = '/videogames/create';
-    try {
-      await axios.post(petition, game)
-      .then(res => console.log(res))
-    } catch (error) {
-        return { error: error.message };
-    } 
-  }
+  },[dispatch, pathname])
   
   return (
     <div className="App">
       {
-        (pathname !== '/') ? <Nav /> : null
+        (pathname !== ('/')) ? <Nav /> : null
       }
       <Routes>
+        <Route
+          path='/loader'
+          element={<Loader />}
+        />
         <Route
           path='/'
           element={<Landing />}
@@ -51,7 +45,7 @@ function App() {
           />
         <Route
           path='/form'
-          element={<Form create={createGame}/>}
+          element={<Form />}
           />
       </Routes>
     </div>

@@ -3,6 +3,7 @@ import {  useParams } from "react-router-dom";
 import styles from './detail.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteDetail, getDetail } from '../../redux/actions/actions';
+import Loader from "../../components/Loader/Loader";
 
 const Detail = () => {
     const {id} = useParams();
@@ -16,16 +17,14 @@ const Detail = () => {
     },[id, dispatch]);
 
     useEffect(() => {
-        console.log(detailedGame);
-        if (detailedGame === {}) {
-            setLoading(true);   
-        } else {
-            setLoading(false);
-        }
-    },[detailedGame]);
+        setTimeout(() => {
+            setLoading(false)
+        }, 4000)
+        return () => setLoading(true);
+    },[]);
 
     if (loading) {
-        return(<div>Loading...</div>);
+        return(<div><Loader/></div>);
     };
 
     return(

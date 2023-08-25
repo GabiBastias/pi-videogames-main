@@ -4,9 +4,11 @@ import styles from './card.module.css';
 const Card = ({ data }) =>{
     return(
         <div className={styles.divCard}>
-            <Link to={`/detail/${data.id}`}>
-                <img src={data.image} alt={data.name} className={styles.cardImg}/>
-            </Link>
+            <div className={styles.cardImg}>
+                <Link to={`/detail/${data.id}`}>
+                    <img src={data.image} alt={data.name}/>
+                </Link>
+            </div>
             <Link to={`/detail/${data.id}`}>
                 <p>{data.name}</p>
             </Link>

@@ -32,6 +32,17 @@ export const wordName = (word) => {
     }
 }
 
+export const postGame = (game) => {
+    const response = '/videogames/create';
+    return async () => {
+        try {
+            await axios.post(response, game)
+        } catch (error) {
+            return { error: error.message };
+        }
+    }
+}
+
 // Genres
 export const allGenres = () => {
     const response = '/videogames/genres';

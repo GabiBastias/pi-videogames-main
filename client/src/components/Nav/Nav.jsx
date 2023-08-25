@@ -3,19 +3,14 @@ import styles from './nav.module.css'
 
 const Nav = () => {
     return(
-        <nav className={styles.divNav}>
-            <div className={styles.divBurger}>
-                <button className={styles.burguer}></button>
-                <ul className={styles.ulNav}>
-                    <Link to='/home'>
-                        <button>Home</button>
-                    </Link>
-                    <Link to='/form'>
-                        <button>Create</button>
-                    </Link>
+        <div className={styles.divNav}> 
+            <nav className={styles.nav}>
+                <ul className={styles.navList}>
+                    <li><Link to='/home'>Home</Link></li>
+                    <li><Link to='/form'>Create</Link></li>
                 </ul>
-            </div>
-        </nav>
+            </nav>
+        </div>
     )
 }
 

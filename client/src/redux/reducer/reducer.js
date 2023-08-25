@@ -75,7 +75,7 @@ const reducer = (state = initialState, action) => {
                 videogames: orderedVideogames
             }
         case FILTER:
-            const filteredGames = [...state.allGamesList];
+            const filteredGames = [...state.videogames];
             let arrayOfGenres = [];
             const match = state.genres.find(gen => gen.name === action.payload);
             if (match) {

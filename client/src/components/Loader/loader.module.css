@@ -1,0 +1,11 @@
+.divLoader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & video{
+        position: static;
+        width: 80%;
+        object-fit: cover;
+    }
+}

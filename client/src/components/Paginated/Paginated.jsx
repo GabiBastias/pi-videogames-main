@@ -1,3 +1,4 @@
+import styles from './paginated.module.css'
 
 const Paginated = ({ currentPage, totalPages, onPageChange }) => {
     const handlePrevPage = () => {
@@ -12,7 +13,7 @@ const Paginated = ({ currentPage, totalPages, onPageChange }) => {
     }
 
     return(
-        <div>
+        <div className={styles.divPaginated}>
             <button onClick={handlePrevPage}>Prev</button>
             <span>Page {currentPage}</span>
             <button onClick={handleNextPage}>Next</button>
