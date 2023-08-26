@@ -16,7 +16,8 @@
     flex-wrap: wrap;
     
     & img{
-        width: 15rem;
+        width: 240px;
+        height: 135px;
         border-radius: 2rem;
     }
 }
