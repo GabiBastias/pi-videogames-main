@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap');
+
 .divNav{
     border-radius: 0px 0px 10px 10px;
     background-color: rgba(161, 0, 167, 0.3);
@@ -9,24 +11,43 @@
     position: relative;
     justify-content: center;
     align-items: center;
-
-    & img{
-        position: relative;
-        margin: 0px;
-        width: 20rem;
-       right: 30rem; 
-    }
 }
 
 
+.nav{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: -20rem;
+    gap: 400px;
+}
+
+.aNav {
+    text-decoration: none;
+    color: rgb(187, 187, 187);
+    position: relative;
+    font-family: 'Exo';
+    font-size: 2em;
+    font-style: italic;
+    letter-spacing: 0.03em;
+    transition: 0.8s;
+    text-shadow: 6px 10px 11px rgba(168, 32, 157, 0.8);
+    &:hover{
+        font-size: 3em;
+    }
+}
+
+.logo{
+    position: relative;
+    height: 6rem;
+    top: -0.3rem;
+}
 
 .navList{
     display: flex;
     list-style-type: none;
     gap: 1rem;
-}
-
-.navList li a {
-    text-decoration: none;
-    color: aliceblue;
+    position: inherit;
+    flex-direction: row;
 }

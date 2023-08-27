@@ -5,31 +5,31 @@ const validation = (data) => {
     let errors = {};
 
     if (!data.name) {
-        errors.name = "This input can't be empty";
+        errors.name = "This input can't be empty.";
     } else if (!nameRegex.test(data.name)){
-        errors.name = "The name must contains letters, numbers and spaces only";
+        errors.name = "The name must contains letters, numbers and spaces only.";
     }
 
-    if (data.platforms.length < 0) {
-        errors.platforms = "Please add at least one platform"
+    if (data.platforms.length < 1) {
+        errors.platforms = "Please add at least one platform."
     }
 
     if (!data.releaseDate) {
-        errors.releaseDate = "This input can't be empty";
+        errors.releaseDate = "Choose a release date.";
     }
 
     if (!data.rating) {
-        errors.rating = "This input can't be empty";
+        errors.rating = "Rate the game.";
     }
 
     if (!data.image) {
-        errors.image = "This input can't be empty";
+        errors.image = "This input can't be empty.";
     } else if (!imageURLRegex.test(data.image)){
-        errors.image = 'Image URL is not valid';
+        errors.image = 'Image URL is not valid.';
     }
 
-    if (data.genres.length === 0) {
-        errors.genres = 'Please choose at least one genre'
+    if (data.genres.length < 1) {
+        errors.genres = 'Please choose at least one genre.'
     }
 
     return errors;

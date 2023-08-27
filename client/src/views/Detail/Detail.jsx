@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import {  useLocation, useNavigate, useParams } from "react-router-dom";
 import styles from './detail.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteDetail, getDetail } from '../../redux/actions/actions';
@@ -8,6 +8,7 @@ import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo";
 
 const Detail = () => {
     const {id} = useParams();
+    const navigate = useNavigate();
     const detailedGame = useSelector(state => state.detailedGame);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
@@ -31,11 +32,12 @@ const Detail = () => {
 
     return(
         <div className={styles.divDetail}>
+            {console.log(detailedGame)}
             <BackgroundVideo/>
             <div className={styles.infoBorder}>
                 <div className={styles.bg}></div>
                 <div className={styles.name}>
-                        <h2>{detailedGame.name}</h2>
+                        <h2 className={styles.h2Name}>{detailedGame.name}</h2>
                         <div 
                             dangerouslySetInnerHTML={descriptionHtml}
                         ></div>

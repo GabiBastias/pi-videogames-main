@@ -3,7 +3,7 @@ const { Videogame, Genres } = require('../db');
 const createVideogame = async(req, res) => {
     const { name, description, platforms, image, releaseDate, rating, genres } = req.body;
     try {
-        if (!name || !platforms || !image || !releaseDate || !rating || !genres) {
+        if (!name || !platforms || !image || !releaseDate || !rating || genres.length === 0) {
             return res.status(404).send('Missing data.')
         } else {
             const newVideogame = await Videogame.build({ name, description: `<p>${description}</p>` || '<p>Description not available.</p>', platforms, image, releaseDate, rating });

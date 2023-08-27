@@ -13,7 +13,7 @@ const Form = () => {
         if (genres) {
             setSelectedGenres(genres);
         }
-    },[genres])
+    },[genres]);
 
     const [newGame, setNewGame] = useState({
         name: "",
@@ -75,9 +75,11 @@ const Form = () => {
 
     return(
         <div className={styles.divForm}>
+            {console.log(errors.platforms)}
             <BackgroundVideo/>
             <div className={styles.formBox}>
-                <h2>Form</h2>
+                <div className={styles.bg}></div>
+                <h2 className={styles.h2Form}>Create Videogame</h2>
                 <form className={styles.formDetail} onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="name">Name: </label>
@@ -99,7 +101,6 @@ const Form = () => {
                         <textarea 
                             name="description" 
                             value={newGame.description}
-                            id=""
                             cols="30" 
                             rows="10"
                             onChange={handleChange}
@@ -175,17 +176,18 @@ const Form = () => {
                                             key={gen.id}
                                             value={gen.name}
                                             onClick={submitGenre}
+                                            className={styles.genresButton}
                                         >{gen.name}</button>
                                 }) : null
                             }
+                            <br />
                         </div>
-                        <br />
+                        <span>Genres: {newGame.genres.map(gen => `${gen.name} `)} </span>
                         {
-                            errors.genres ? (<span>{errors.genres}</span>) : ("")
+                            newGame.genres.length < 1 ? (<span>{errors.genres}</span>) : ("")
                         }
                     </div>
-                    <br />
-                    <button type="submit">Create</button>
+                    <button className={styles.buttonCreate} type="submit"><span>Create</span></button>
                 </form>
             </div>
         </div>

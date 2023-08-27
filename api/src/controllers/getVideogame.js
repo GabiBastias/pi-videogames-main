@@ -5,6 +5,7 @@ const URL = `https://api.rawg.io/api/games`;
 
 const getVideogame = async(req, res) => {
     const {id} = req.params;
+    let videogame = {};
     try {
         if (id.length > 7) {
             const gameDB = await Videogame.findByPk(id, {include: [Genres]});
@@ -19,7 +20,7 @@ const getVideogame = async(req, res) => {
                     rating: gameDB.rating,
                     genres: gameDB.genres.map(gen => gen.name)
                 }
-                return res.status(200).json(titleDB); 
+                videogame = titleDB; 
             }
         } else {
             const games = (await axios(`${URL}/${id}?key=${API_KEY}`)).data;
@@ -34,13 +35,16 @@ const getVideogame = async(req, res) => {
                     rating: games.rating,
                     genres: games.genres.map(gen => gen.name)
                 }
-                return res.status(200).json(game)
-            } else {
-                return res.status(404).send('Game not found');
+                videogame = game;
             }
         }
+        if (videogame) {
+            res.status(200).json(videogame)
+        } else {
+            res.status(404).send('Game not found')
+        }
     } catch (error) {
-        res.status(500).json({error: error.message});
+        res.status(404).json({error: error.message});
     }
 }
 

@@ -55,6 +55,7 @@ const Home = () => {
     
     return(
         <div className={styles.homeContainer}>
+            {console.log(videogames)}
             <BackgroundVideo />
             <div className={styles.divHome}>
                 <div className={styles.divSearchBar}>

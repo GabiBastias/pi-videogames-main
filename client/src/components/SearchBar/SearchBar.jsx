@@ -19,11 +19,11 @@ const SearchBar = ({onSearch}) => {
             <input
                 className={styles.inputSearch}
                 onChange={handleChange}
-                placeholder=""
+                placeholder="Search by name..."
                 value={name}
                 onKeyDown={handleEnter}
             />
-            <button className={styles.buttonSearch} onClick={() => {onSearch(name)}}>Search</button>
+            <button className={styles.buttonSearch} onClick={() => {onSearch(name)}}>Go</button>
         </div>
     );
 }

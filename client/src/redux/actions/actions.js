@@ -20,15 +20,16 @@ export const allGames = () => {
 export const wordName = (word) => {
     const response = `/videogames?name=${word}`;
     return async (dispatch) => {
-      try {
-          const { data } = await axios(response);
-          return dispatch({
-              type: WORD_NAME,
-              payload: data
-          })
-      } catch (error) {
-          return { error: error.message };
-      }
+        try {
+            const { data } = await axios(response);
+            return dispatch({
+                type: WORD_NAME,
+                payload: data
+            })
+        } catch (error) {
+            console.log(error.message);
+            alert("Game not found or didn't exist")
+        }
     }
 }
 
@@ -38,7 +39,7 @@ export const postGame = (game) => {
         try {
             await axios.post(response, game)
         } catch (error) {
-            return { error: error.message };
+            alert("Failed to create game, please check the data.");
         }
     }
 }
