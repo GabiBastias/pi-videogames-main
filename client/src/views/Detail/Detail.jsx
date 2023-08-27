@@ -4,12 +4,14 @@ import styles from './detail.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteDetail, getDetail } from '../../redux/actions/actions';
 import Loader from "../../components/Loader/Loader";
+import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo";
 
 const Detail = () => {
     const {id} = useParams();
     const detailedGame = useSelector(state => state.detailedGame);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
+    const descriptionHtml = { __html: detailedGame.description };
 
     useEffect(()=>{
         dispatch(getDetail(id));
@@ -29,31 +31,37 @@ const Detail = () => {
 
     return(
         <div className={styles.divDetail}>
-            <div className={styles.divImg}>
-                <img className={styles.imgDetail} src={detailedGame.image} alt={detailedGame.name} />
-            </div>
-            <div className={styles.divInfo}>
+            <BackgroundVideo/>
+            <div className={styles.infoBorder}>
+                <div className={styles.bg}></div>
                 <div className={styles.name}>
-                    <h2>{detailedGame.name}</h2>
-                    <p>{detailedGame.description}</p>
+                        <h2>{detailedGame.name}</h2>
+                        <div 
+                            dangerouslySetInnerHTML={descriptionHtml}
+                        ></div>
                 </div>
-                <div className={styles.platforms}>
-                    <p>Platforms: </p>
-                    {detailedGame.platforms?.map((plat, index) => {
-                        return <ul key={index}>
-                            <li>{plat}</li>
-                        </ul>
-                    })}
-                </div>
-                <div className={styles.genres}>
-                    <p>Release Date: {detailedGame.releaseDate}</p>
-                    <p>Rating: {detailedGame.rating}</p>
-                    <p>Genres: </p>
-                    {detailedGame.genres?.map((gen, index) => {
-                        return <ul key={index}>
-                            <li>{gen}</li>
-                        </ul>
-                    })}
+                <div className={styles.divInfo}>
+                    <div className={styles.divImg}>
+                        <img className={styles.imgDetail} src={detailedGame.image} alt={detailedGame.name} />
+                    </div>
+                    <div className={styles.platforms}>
+                        <h4>Platforms: </h4>
+                        {detailedGame.platforms?.map((plat, index) => {
+                            return <ul key={index}>
+                                <li className={styles.listInfo}>{plat}</li>
+                            </ul>
+                        })}
+                    </div>
+                    <div className={styles.genres}>
+                        <h4>Release Date: </h4><p className={styles.listInfo}>{detailedGame.releaseDate}</p>
+                        <h4>Rating: </h4><p className={styles.listInfo}>{detailedGame.rating}{"\u2B50"}</p>
+                        <h4>Genres: </h4>
+                        {detailedGame.genres?.map((gen, index) => {
+                            return <ul key={index}>
+                                <li className={styles.listInfo}>{gen}</li>
+                            </ul>
+                        })}
+                    </div>
                 </div>
             </div>
         </div>

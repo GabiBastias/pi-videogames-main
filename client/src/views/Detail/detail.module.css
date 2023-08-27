@@ -1,36 +1,194 @@
 .divDetail{
+    width: 100%;
+    background-color: transparent;
     display: flex;
+    border-radius: 14px;
+    align-items: center;
+    justify-content: center;
+    margin: 0rem;
+    width: 100hv;
+    height: 1hv;
+
+}
+
+.infoBorder{
+    width: 90rem;
+    height: 50rem;
+    display: flex;
+    border-radius: 14px;
+    z-index: 1111;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    /* box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff; */
+}
+
+.bg {
     position: absolute;
-    flex-wrap: wrap;
+    margin: 0.33rem;
+    width: 89.3rem;
+    height: 49.3rem;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.8s;
+}
+
+.name{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    border: 1px solid greenyellow;
-    border-radius: 20%;
-    margin: 0rem;
-    padding: 1rem;
-    left: 100px;
-    gap: 1rem;
-    width: 93%;
-    height: 93%;
-
+    margin: 2rem;
+    width: 45rem;
+    height: 45rem;
+    padding: 0rem;
+    z-index: 3;
 }
 
 .imgDetail{
-    border-radius: 5px;
-    width: 60rem;
-    height: auto;
+    height: 20rem;
+    border-radius: 5%;
+    display: flex;
+    position: relative;
+    z-index: 2;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    transition: 0.8s;
+    &:hover{
+        height: 23rem;
+    }
 }
 
-.divInfo {  display: grid;
+.divInfo {
+    z-index: 2;
+    padding: 2rem;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 3rem;
+    /* gap: 0px 1rem; */
     grid-auto-flow: row;
+    width: 45rem;
+    height: 45rem;
     grid-template-areas:
-      "name name"
+      "divImg divImg"
       "platforms genres"
       "platforms genres";
+
+    transition: 0.8s;
+    /* &:hover{
+        width: 50rem;
+    } */
+}
+
+h4{
+    transition: 0.8s;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 3px 3px 5px rgba(255, 95, 46, 0.76);
+    animation: glitch 1s linear infinite;
+}
+h4:before,
+h4:after{
+    content: attr(title);
+    position: absolute;
+    left: 0;
+}
+  
+h4:before{
+    animation: glitchTop 1s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+h4:after{
+    animation: glitchBotom 1.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+h2{
+    transition: 0.8s;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 3px 3px 5px rgba(255, 95, 46, 0.76);
+    &:hover{
+        font-size: 50px;
+    }
+    animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+    2%,64%{
+      transform: translate(2px,0) skew(0deg);
+    }
+    4%,60%{
+      transform: translate(-2px,0) skew(0deg);
+    }
+    62%{
+      transform: translate(0,0) skew(5deg); 
+    }
+}
+  
+h2:before,
+h2:after{
+    content: attr(title);
+    position: absolute;
+    left: 0;
+}
+  
+h2:before{
+    animation: glitchTop 1s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+  
+@keyframes glitchTop{
+    2%,64%{
+      transform: translate(2px,-2px);
+    }
+    4%,60%{
+      transform: translate(-2px,2px);
+    }
+    62%{
+      transform: translate(13px,-1px) skew(-13deg); 
+    }
+}
+  
+h2:after{
+    animation: glitchBotom 1.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+  
+@keyframes glitchBotom{
+    2%,64%{
+      transform: translate(-2px,0);
+    }
+    4%,60%{
+      transform: translate(-2px,0);
+    }
+    62%{
+      transform: translate(-22px,5px) skew(21deg); 
+    }
+}
+
+.imgDetail:hover,
+.divInfo:hover {
+  z-index: 4;
+}
+
+
+.name p{
+    font-size: 1rem;
+    color:rgba(255, 255, 255, 0.7);
+    text-align:center;
+    text-shadow:
+        0 0 5px hsl(14, 100%, 58%),
+        0 0 10px #ff63a2,
+        0 0 15px #ff63a2,
+        0 0 20px #ff63a2,
+        0 0 25px #ff63a2,
+        0 0 30px #ff63a2;
 }
 
 .platforms{ 
@@ -41,6 +199,25 @@
     grid-area: genres;
 }
 
-.name{
-    grid-area: name;
+.divImg{
+    grid-area: divImg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    
+}
+
+.listInfo{
+    list-style: none;
+    font-size: 0.8rem;
+    color:rgba(255, 255, 255, 0.7);
+    text-align:center;
+    text-shadow:
+        0 0 5px #ff63a2,
+        0 0 10px #ff63a2,
+        0 0 15px #ff63a2,
+        0 0 20px #ff63a2,
+        0 0 25px #ff63a2,
+        0 0 30px #ff63a2;
 }

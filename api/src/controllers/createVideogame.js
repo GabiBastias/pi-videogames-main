@@ -6,7 +6,7 @@ const createVideogame = async(req, res) => {
         if (!name || !platforms || !image || !releaseDate || !rating || !genres) {
             return res.status(404).send('Missing data.')
         } else {
-            const newVideogame = await Videogame.build({ name, description: description || 'Description not available.', platforms, image, releaseDate, rating });
+            const newVideogame = await Videogame.build({ name, description: `<p>${description}</p>` || '<p>Description not available.</p>', platforms, image, releaseDate, rating });
             newVideogame.save();
             for (const genre of genres) {
                 const genreName = await Genres.findOne({ where: { name: genre.name } });
