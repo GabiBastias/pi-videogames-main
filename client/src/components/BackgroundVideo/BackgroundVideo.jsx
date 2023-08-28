@@ -10,12 +10,9 @@ import City_Sunset from '../../media/video/City_Sunset.mp4'
 import { useEffect, useState } from 'react'
 
 const BackgroundVideo = ({videoType}) => {
-    
-    console.log(videoType);
     const [video, setVideo] = useState(null);
-    let random = [City_Sunset, Beyond_Mountain, Beach_Night];
-    let indexRandom = Math.floor(Math.random()*random.length);
-    console.log(random[indexRandom]);
+    const random = [City_Sunset, Beyond_Mountain, Beach];
+    const indexRandom = Math.floor(Math.random()*random.length);
     
     useEffect(() => {
         if (videoType === 'Beyond') setVideo(Beyond_Sunset);
@@ -25,10 +22,8 @@ const BackgroundVideo = ({videoType}) => {
         else if (videoType === 'Beach_Night') setVideo(Beach_Night);
         else if (videoType === 'Beyond_Mountain') setVideo(Beyond_Mountain);
         else if (videoType === 'City_Sunset') setVideo(City_Sunset);
-        else{
-            setVideo(random[indexRandom])
-        }
-    },[videoType])
+        else if (videoType === 'swap') setVideo(random[indexRandom])
+    },[videoType, indexRandom])
     
     
 

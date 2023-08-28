@@ -1,3 +1,9 @@
 .App {
   text-align: center;
 }
+
+.selectedId{
+  background-color: rgb(255, 222, 218) !important;
+  border: none;
+  color: rgb(132, 0, 255) !important;
+}

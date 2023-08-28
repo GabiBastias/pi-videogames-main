@@ -50,20 +50,24 @@ const Form = () => {
     }
 
     const submitGenre = (event) => {
+        const genresId = document.getElementById(event.target.id);
         const genFinder = selectedGenres.find(gen => {
             return gen.name === event.target.value;
         });
         if (newGame.genres.includes(genFinder)) {
             const genFilter = newGame.genres.filter(gen => gen !== genFinder);
-            setNewGame({...newGame, genres: genFilter}) ;
+            setNewGame({...newGame, genres: genFilter});
+            genresId.classList.remove('selectedId')
         } else {
             setNewGame({...newGame, genres: [...newGame.genres, genFinder]});
+            genresId.classList.add('selectedId')
         };
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(postGame(newGame))
+        dispatch(postGame(newGame));
+        alert('Game created')
         setNewGame({
             name: "",
             description: "",
@@ -89,7 +93,6 @@ const Form = () => {
 
     return(
         <div className={styles.divForm}>
-            {console.log(errors.platforms)}
             <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.formBox}>
                 <div className={styles.bg}></div>
@@ -116,7 +119,7 @@ const Form = () => {
                             name="description" 
                             value={newGame.description}
                             cols="30" 
-                            rows="10"
+                            rows="8"
                             onChange={handleChange}
                         ></textarea>
                     </div>
@@ -188,6 +191,7 @@ const Form = () => {
                                     return <button
                                             type="button"
                                             key={gen.id}
+                                            id={gen.id}
                                             value={gen.name}
                                             onClick={submitGenre}
                                             className={styles.genresButton}
@@ -196,7 +200,6 @@ const Form = () => {
                             }
                             <br />
                         </div>
-                        <span>Genres: {newGame.genres.map(gen => `${gen.name} `)} </span>
                         {
                             newGame.genres.length < 1 ? (<span>{errors.genres}</span>) : ("")
                         }

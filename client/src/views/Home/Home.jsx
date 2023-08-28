@@ -37,11 +37,11 @@ const Home = () => {
     if (loading) return (<div><Loader /></div>)
 
     // Paginated
-    const totalPages = Math.ceil(videogames.length / 15);
+    const gamesPerPage = 15;
+    const totalPages = Math.ceil(videogames.length / gamesPerPage);
     const onPageChange = (pageNumber) => {
         dispatch(setPage(pageNumber));
     };
-    const gamesPerPage = 15;
     const startIndex = currentPage * gamesPerPage;
     const endIndex = startIndex + gamesPerPage;
     const visibleGames = videogames.slice(startIndex, endIndex);
@@ -56,7 +56,6 @@ const Home = () => {
     
     return(
         <div className={styles.homeContainer}>
-            {console.log(videogames)}
             <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.divHome}>
                 <div className={styles.divSearchBar}>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {  useLocation, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import styles from './detail.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteDetail, getDetail } from '../../redux/actions/actions';
@@ -16,9 +16,14 @@ const Detail = () => {
     const descriptionHtml = { __html: detailedGame.description };
 
     useEffect(()=>{
-        dispatch(getDetail(id));
-        return dispatch(deleteDetail());
-    },[id, dispatch]);
+        dispatch(getDetail(id)).then((result) => {
+            if (result.error) {
+                alert('Game not found')
+                navigate('/home')
+            }
+        })
+        return () => dispatch(deleteDetail());
+    },[id, dispatch, navigate]);  
 
     useEffect(() => {
         setTimeout(() => {
@@ -33,7 +38,6 @@ const Detail = () => {
 
     return(
         <div className={styles.divDetail}>
-            {console.log(detailedGame)}
             <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.infoBorder}>
                 <div className={styles.bg}></div>

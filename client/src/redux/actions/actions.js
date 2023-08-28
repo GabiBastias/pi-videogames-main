@@ -27,7 +27,6 @@ export const wordName = (word) => {
                 payload: data
             })
         } catch (error) {
-            console.log(error.message);
             alert("Game not found or didn't exist")
         }
     }
@@ -40,6 +39,7 @@ export const postGame = (game) => {
             await axios.post(response, game)
         } catch (error) {
             alert("Failed to create game, please check the data.");
+            return { error: error.message}
         }
     }
 }
@@ -60,8 +60,6 @@ export const allGenres = () => {
     }
 }
 
-
-
 // Detail
 export const getDetail = (id) => {
     const response = `/videogames/detail/${id}`;
@@ -73,7 +71,7 @@ export const getDetail = (id) => {
                 payload: data
             })
         } catch (error) {
-            return { error: error.message };
+            return { error: error.message }
         }
     }
 }
