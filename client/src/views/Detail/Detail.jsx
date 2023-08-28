@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteDetail, getDetail } from '../../redux/actions/actions';
 import Loader from "../../components/Loader/Loader";
 import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo";
+const BACKGROUND_TYPE = 'swap'; 
 
 const Detail = () => {
     const {id} = useParams();
@@ -33,7 +34,7 @@ const Detail = () => {
     return(
         <div className={styles.divDetail}>
             {console.log(detailedGame)}
-            <BackgroundVideo/>
+            <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.infoBorder}>
                 <div className={styles.bg}></div>
                 <div className={styles.name}>

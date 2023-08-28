@@ -1,16 +1,15 @@
+import BackgroundVideo from '../../components/BackgroundVideo/BackgroundVideo';
 import styles from './landing.module.css'
-import video from '../../media/video/Red_Skull.mp4'
 import { NavLink } from 'react-router-dom';
+const BACKGROUND_TYPE = 'Beach_Night';
+
 
 const Landing = () => {
     return(
         <div className={styles.divLanding}>
-            <br/>
-            <video loop autoPlay muted>
-                <source src={video}/>
-            </video>
+            <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.divButton}>
-                <NavLink to='/home' className={styles.navLinkButton}>ENJOY!</NavLink>
+                <NavLink to='/home' className={styles.navLinkButton}>W E L C O M E !</NavLink>
             </div>
         </div>
     )

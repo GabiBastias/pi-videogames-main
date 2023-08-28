@@ -1,29 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=Mr+Dafoe);
+
 .divLanding{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-
-    & video {
-        width: 100%;
-        height: 100vh;
-        object-fit: cover;
-    }
+    background-color: transparent;
+    flex-direction: column;
 }
 
-.h1Landing{
+.dreams {
     position: absolute;
-    color: #cacaca;
-    bottom: 10.5vh;
+    left: 50rem;
+    top: 5rem;
+    font-family: 'Mr Dafoe', cursive;
+    font-size: 200px;
+    margin-top: 160px;
+    margin-bottom: 0;
+    filter: brightness(0.5);
+    color: #2189eb;
+    -webkit-text-fill-color: rgb(90, 142, 253);
+    text-shadow: -2px -2px 0 rgb(186, 218, 255, 0.8),
+        5px 12px 11px rgba(145, 32, 168, 0.8);
+    /* -webkit-filter: drop-shadow(3px 3px 1px #1f4462);
+    -webkit-transform: skew(-5deg,-5deg); */
+    font-weight: normal;
+    z-index: 2;
+    margin-left: 60px;
+    padding-left: 50px;
+    padding-right: 70px;
 }
+
 
 .divButton{
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    /* border: 2px solid white; */
     bottom: 2vh;
 }
 
@@ -34,26 +48,26 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    --red: #ad0000da;
-    font-size: 30px;
+    --violet: #4b00adda;
+    font-size: 35px;
     position: relative;
-    font-family: inherit;
+    font-family: 'Mr Dafoe', cursive;
     font-weight: bold;
     border-radius: 3em;
     overflow: hidden;
     transition: all 0.3s;
     line-height: 1.4em;
-    border: 3px solid var(--red);
-    background: linear-gradient(to right, rgba(253, 27, 27, 0.1) 1%, transparent 40%,transparent 60% , rgba(253, 27, 27, 0.1) 100%);
-    color: var(--red);
-    box-shadow: inset 0 0 10px rgba(253, 27, 27, 0.4), 0 0 9px 3px rgba(253, 27, 27, 0.1);
+    border: 3px solid var(--violet);
+    background: linear-gradient(to right, rgba(27, 68, 253, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 68, 253, 0.1) 100%);
+    color: var(--violet);
+    box-shadow: inset 0 0 10px rgba(27, 68, 253, 0.4), 0 0 9px 3px rgba(27, 68, 253, 0.1);
 
     &:hover{
-        color: #d30000c0;
-        box-shadow: inset 0 0 10px rgba(253, 27, 27, 0.6), 0 0 9px 3px rgba(253, 27, 27, 0.2);
+        color: #3f00d3c0;
+        box-shadow: inset 0 0 10px rgba(27, 68, 253, 0.6), 0 0 9px 3px rgba(27, 68, 253, 0.2);
         width: 100vh;
         height: 10vh;
-        font-size: 40px;
+        font-size: 50px;
     }
 }
 
@@ -65,7 +79,7 @@
     height: 100%;
     top: 0;
     transition: transform .4s ease-in-out;
-    background: linear-gradient(to right, transparent 1%, rgba(253, 27, 27, 0.1) 40%,rgba(253, 27, 27, 0.1)60% , transparent 100%);
+    background: linear-gradient(to right, transparent 1%, rgba(27, 68, 253, 0.1) 40%,rgba(27, 68, 253, 0.1)60% , transparent 100%);
 }
 
 .navLinkButton:hover:before {

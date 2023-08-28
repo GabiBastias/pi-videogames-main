@@ -7,6 +7,7 @@ import Paginated from '../../components/Paginated/Paginated';
 import { useEffect, useState } from 'react';
 import Loader from '../../components/Loader/Loader';
 import BackgroundVideo from '../../components/BackgroundVideo/BackgroundVideo';
+const BACKGROUND_TYPE = 'Beyond';
 
 const Home = () => {
     const videogames = useSelector(state => state.videogames);
@@ -56,7 +57,7 @@ const Home = () => {
     return(
         <div className={styles.homeContainer}>
             {console.log(videogames)}
-            <BackgroundVideo />
+            <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.divHome}>
                 <div className={styles.divSearchBar}>
                     <SearchBar onSearch={onSearch}/>

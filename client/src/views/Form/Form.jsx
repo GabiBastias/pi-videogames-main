@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from './form.module.css';
 import { postGame } from "../../redux/actions/actions";
 import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo";
+import Loader from "../../components/Loader/Loader";
+const BACKGROUND_TYPE = 'City';
 
 const Form = () => {
     const genres = useSelector(state => state.genres);
@@ -73,10 +75,22 @@ const Form = () => {
         });
     };
 
+    // Loading
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+        return () => setLoading(true)
+    },[])
+
+    if (loading) return (<div><Loader /></div>)
+
     return(
         <div className={styles.divForm}>
             {console.log(errors.platforms)}
-            <BackgroundVideo/>
+            <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.formBox}>
                 <div className={styles.bg}></div>
                 <h2 className={styles.h2Form}>Create Videogame</h2>
