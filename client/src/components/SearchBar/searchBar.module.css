@@ -19,16 +19,20 @@
     .inputSearch{
         width: 25rem;
         height: 3rem;
-        &::placeholder{
-            color: rgba(150, 150, 150, 0.5);
-        }
     }
+    .inputSearch::placeholder{
+        color: rgba(150, 150, 150, 0.5);
+    }
+
+}
+
+.divSearchBar:hover{
     .buttonSearch{
         width: 3.1rem;
         height: 3.1rem;
         right: -0.15rem;
         color: rgba(201, 201, 201, 0.7);
-    text-shadow: 3px 3px 5px rgb(187, 0, 140);
+        text-shadow: 3px 3px 5px rgb(187, 0, 140);
     }
 }
 
