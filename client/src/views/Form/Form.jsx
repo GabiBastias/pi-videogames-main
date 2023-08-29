@@ -49,6 +49,13 @@ const Form = () => {
         setErrors(validation({...newGame, [event.target.name]: event.target.value}));
     }
 
+    const ereaseGenres = () => {
+        const selectedIds = document.querySelectorAll('.selectedId');
+        selectedIds.forEach(element => {
+            element.classList.remove('selectedId');
+        });
+    };
+
     const submitGenre = (event) => {
         const genresId = document.getElementById(event.target.id);
         const genFinder = selectedGenres.find(gen => {
@@ -207,7 +214,7 @@ const Form = () => {
                             newGame.genres.length < 1 ? (<span>{errors.genres}</span>) : ("")
                         }
                     </div>
-                    <button className={styles.buttonCreate} type="submit"><span>Create</span></button>
+                    <button className={styles.buttonCreate} onClick={ereaseGenres} type="submit"><span>Create</span></button>
                 </form>
             </div>
         </div>
