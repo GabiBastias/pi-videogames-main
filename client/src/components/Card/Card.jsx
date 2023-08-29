@@ -6,7 +6,7 @@ const Card = ({ data }) =>{
         <div className={styles.divCard}>
             <NavLink className={styles.cardImg} to={`/detail/${data.id}`}>
                 <p className={styles.name}>{data.name}</p>
-                <img src={data.image} alt={data.name}/>
+                <img className={styles.img} src={data.image} alt={data.name}/>
                 <p className={styles.rating}>Rating: {data.rating}{"\u2B50"}</p>
                 <p className={styles.genres}>{data.genres.map(genre => `${genre} `)}</p>
             </NavLink>
