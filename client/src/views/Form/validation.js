@@ -1,4 +1,5 @@
 const nameRegex = new RegExp(/^[a-zA-Z0-9 _]+$/);
+const descriptionRegex = new RegExp(/^\s+|\s+$/);
 const imageURLRegex = new RegExp(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&=]*)/);
 
 const validation = (data) => {
@@ -6,12 +7,16 @@ const validation = (data) => {
 
     if (!data.name) {
         errors.name = "This input can't be empty.";
+    } else if (data.name.length > 30){
+        errors.name = "The name cannot be longer than 30 characters."
     } else if (!nameRegex.test(data.name)){
         errors.name = "The name must contains letters, numbers and spaces only.";
     }
 
     if (!data.description){
         errors.description = "This field is required";
+    } else if (descriptionRegex.test(data.description)) {
+        errors.description = "Description cannot be empty or consist of only whitespace.";
     }
 
     if (data.platforms.length < 1) {

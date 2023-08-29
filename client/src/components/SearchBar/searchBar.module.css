@@ -7,28 +7,28 @@
     height: 2.5rem;
     transition: 0.8s;
     border-radius: 3rem 3rem 3rem 3rem;
+}
 
-    &:hover{
-        box-shadow: rgba(196, 3, 214, 0.3) 0px 0px 0px 3px;
-        width: 28.2rem;
+.divSearchBar:hover{
+    box-shadow: rgba(196, 3, 214, 0.3) 0px 0px 0px 3px;
+    width: 28.2rem;
+    height: 3rem;
+}
+
+.divSearchBar:hover{
+    .inputSearch{
+        width: 25rem;
         height: 3rem;
+        &::placeholder{
+            color: rgba(150, 150, 150, 0.5);
+        }
     }
-
-    &:hover{
-        .inputSearch{
-            width: 25rem;
-            height: 3rem;
-            &::placeholder{
-                color: rgba(150, 150, 150, 0.5);
-            }
-        }
-        .buttonSearch{
-            width: 3.1rem;
-            height: 3.1rem;
-            right: -0.15rem;
-            color: rgba(201, 201, 201, 0.7);
-        text-shadow: 3px 3px 5px rgb(187, 0, 140);
-        }
+    .buttonSearch{
+        width: 3.1rem;
+        height: 3.1rem;
+        right: -0.15rem;
+        color: rgba(201, 201, 201, 0.7);
+    text-shadow: 3px 3px 5px rgb(187, 0, 140);
     }
 }
 
@@ -43,9 +43,9 @@
     font-size: 1.5rem;
     font-style: italic;
     text-align: center;
-    &::placeholder{
-        color: transparent;
-    }
+}
+.inputSearch::placeholder{
+    color: transparent;
 }
 
 .buttonSearch{
