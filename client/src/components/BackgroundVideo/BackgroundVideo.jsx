@@ -6,12 +6,14 @@ import Beach from '../../media/video/Beach.mp4'
 import Beach_Night from '../../media/video/Beach_Night.mp4'
 import Beyond_Mountain from '../../media/video/Beyond_Mountain.mp4'
 import City_Sunset from '../../media/video/City_Sunset.mp4'
+import Mall_Japan from '../../media/video/Mall_Japan.mp4'
+import Volcano from '../../media/video/Volcano.mp4'
 
 import { useEffect, useState } from 'react'
 
 const BackgroundVideo = ({videoType}) => {
     const [video, setVideo] = useState(null);
-    const random = [City_Sunset, Beyond_Mountain, Beach];
+    const random = [Mall_Japan, Beach, Volcano];
     const indexRandom = Math.floor(Math.random()*random.length);
     
     useEffect(() => {
@@ -22,6 +24,8 @@ const BackgroundVideo = ({videoType}) => {
         else if (videoType === 'Beach_Night') setVideo(Beach_Night);
         else if (videoType === 'Beyond_Mountain') setVideo(Beyond_Mountain);
         else if (videoType === 'City_Sunset') setVideo(City_Sunset);
+        else if (videoType === 'Mall_Japan') setVideo(Mall_Japan);
+        else if (videoType === 'Volcano') setVideo(Volcano);
         else if (videoType === 'swap') setVideo(random[indexRandom])
     },[videoType, indexRandom])
     
@@ -29,7 +33,7 @@ const BackgroundVideo = ({videoType}) => {
 
     return(
         <div>
-            <video className={styles.videoBackground} loop autoPlay muted>
+            <video className={styles.videoBackground}  loop autoPlay muted>
                 <source src={video}/>
             </video>
         </div>

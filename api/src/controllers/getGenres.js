@@ -4,7 +4,6 @@ const { Genres } = require('../db');
 let dataLoad = false;
 
 const getGenres = async(req, res) => {
-    // console.log(dataBase);
     try {
         if (!dataLoad) {
             const results = (await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)).data.results;

@@ -10,6 +10,10 @@ const validation = (data) => {
         errors.name = "The name must contains letters, numbers and spaces only.";
     }
 
+    if (!data.description){
+        errors.description = "This field is required";
+    }
+
     if (data.platforms.length < 1) {
         errors.platforms = "Please add at least one platform."
     }

@@ -5,11 +5,11 @@ import { allGames, filterGames, orderGames, setPage, wordName } from '../../redu
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Paginated from '../../components/Paginated/Paginated';
 import { useEffect, useState } from 'react';
-import Loader from '../../components/Loader/Loader';
 import BackgroundVideo from '../../components/BackgroundVideo/BackgroundVideo';
+import imgPacman from '../../media/pictures/7VA.gif'
 const BACKGROUND_TYPE = 'Beyond';
 
-const Home = () => {
+const Home = ({onGames}) => {
     const videogames = useSelector(state => state.videogames);
     const currentPage = useSelector(state => state.currentPage);
     const genres = useSelector(state => state.genres);
@@ -26,15 +26,21 @@ const Home = () => {
 
     // Loading
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         setTimeout(() => {
-            setLoading(false);
-        }, 4000);
-        return () => setLoading(true)
-    },[])
+            setLoading(false)
+        }, 100)
 
-    if (loading) return (<div><Loader /></div>)
+        return () => setLoading(true);
+    },[]);
+
+    if (loading) {
+        return(<div className={styles.divBlack}></div>);
+    };
+
+    if (!onGames) {
+        
+    }
 
     // Paginated
     const gamesPerPage = 15;
@@ -51,7 +57,11 @@ const Home = () => {
         dispatch(orderGames(event.target.value));
     };
     const handleFilter = (event) => {
+        if (event.target.value === 'DataBase') {
+            dispatch(setPage(0));
+        }
         dispatch(filterGames(event.target.value));
+
     };
     
     return(
@@ -88,14 +98,23 @@ const Home = () => {
                         </select>
                     </div>
                 </div>
-                <ul className={styles.ulCards}>{
-                    visibleGames.map((title, index) => {
-                        return <Card
-                        key={index}
-                        data={title}
-                        />
-                    })
-                }</ul>
+                { onGames === false ? 
+                    <div className={styles.divGameLoader}>
+                        <img src={imgPacman} alt="Pacman" />
+                        <h3>Loading...</h3>
+                    </div> : 
+                    <ul className={styles.ulCards}>{ visibleGames.length > 0 ?
+                        visibleGames.map((title, index) => {
+                            return <Card
+                            key={index}
+                            data={title}
+                            />
+                        }): 
+                        <div>
+                            <h3>GAMES NOT FOUND!</h3>
+                        </div>
+                    }</ul> 
+                }
                 <div className={styles.paginated}>
                     <Paginated
                         currentPage={currentPage}

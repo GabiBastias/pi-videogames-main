@@ -39,12 +39,6 @@
     }
 }
 
-.logo{
-    position: relative;
-    height: 6rem;
-    top: -0.3rem;
-}
-
 .navList{
     display: flex;
     list-style-type: none;

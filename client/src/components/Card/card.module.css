@@ -1,13 +1,11 @@
 .divCard{
     display: flex;
-    /* border: 2px solid red; */
     width: 300px;
     height: 168.75px;
     flex-direction: column;
     flex-wrap: wrap;
     position: relative;
     border-radius: 2rem;
-
 }
 
 .cardImg{
@@ -77,8 +75,3 @@
         }
     }
 }
-
-
-
-
-

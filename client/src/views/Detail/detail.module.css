@@ -8,28 +8,32 @@
     margin: 0rem;
     width: 100hv;
     height: 1hv;
-
 }
 
 .infoBorder{
-    width: 90rem;
+    position: relative;
+    top: 1rem;
+    width: 100rem;
     height: 50rem;
     display: flex;
     border-radius: 14px;
     z-index: 1111;
     overflow: hidden;
     flex-wrap: nowrap;
-    /* box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff; */
+    transition: 0.8s;
+    &:hover{
+        box-shadow: rgba(255, 95, 46, 0.76) 0px 0px 0px 3px;
+    }
 }
 
 .bg {
     position: absolute;
-    margin: 0.33rem;
-    width: 89.3rem;
-    height: 49.3rem;
+    margin: 0.3rem;
+    width: 99.5rem;
+    height: 49.5rem;
     z-index: 1;
     background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(1.5px);
     border-radius: 10px;
     overflow: hidden;
     transition: 0.8s;
@@ -48,15 +52,15 @@
 }
 
 .imgDetail{
-    height: 20rem;
+    width: 30rem;
     border-radius: 5%;
     display: flex;
     position: relative;
     z-index: 2;
-    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    box-shadow: rgba(240, 107, 46, 0.4) 5px 5px, rgba(240, 107, 46, 0.3) 10px 10px, rgba(240, 107, 46, 0.2) 15px 15px, rgba(240, 107, 46, 0.1) 20px 20px, rgba(240, 107, 46, 0.05) 25px 25px;
     transition: 0.8s;
     &:hover{
-        height: 23rem;
+        width: 35rem;
     }
 }
 
@@ -66,7 +70,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    /* gap: 0px 1rem; */
     grid-auto-flow: row;
     width: 45rem;
     height: 45rem;
@@ -74,14 +77,11 @@
       "divImg divImg"
       "platforms genres"
       "platforms genres";
-
     transition: 0.8s;
-    /* &:hover{
-        width: 50rem;
-    } */
 }
 
 h4{
+    margin: 0px;
     transition: 0.8s;
     font-size: 20px;
     color: rgba(255, 255, 255, 0.7);
@@ -147,12 +147,12 @@ h4:after{
     color:rgba(255, 255, 255, 0.7);
     text-align:center;
     text-shadow:
-        0 0 5px hsl(14, 100%, 58%),
-        0 0 10px #ff63a2,
-        0 0 15px #ff63a2,
-        0 0 20px #ff63a2,
-        0 0 25px #ff63a2,
-        0 0 30px #ff63a2;
+        0 0 5px #ff5b29,
+        0 0 10px #ff5b29,
+        0 0 15px #ff5b29,
+        0 0 20px #ff5b29,
+        0 0 25px #ff5b29,
+        0 0 30px #ff5b29;
 }
 
 .platforms{ 
@@ -169,21 +169,34 @@ h4:after{
     justify-content: center;
     align-items: center;
     margin: 1rem;
-    
 }
 
-.listInfo{
-    list-style: none;
+.lpInfo{
+    margin: 5px;
+    font-size: 0.8rem;
+    color:rgba(255, 255, 255, 0.7);
+    text-align: center;
+    text-shadow:
+        0 0 5px #ff5b29,
+        0 0 10px #ff5b29,
+        0 0 15px #ff5b29,
+        0 0 20px #ff5b29,
+        0 0 25px #ff5b29,
+        0 0 30px #ff5b29;
+}
+
+.pInfo{
+    margin: 5px;
     font-size: 0.8rem;
     color:rgba(255, 255, 255, 0.7);
     text-align:center;
     text-shadow:
-        0 0 5px #ff63a2,
-        0 0 10px #ff63a2,
-        0 0 15px #ff63a2,
-        0 0 20px #ff63a2,
-        0 0 25px #ff63a2,
-        0 0 30px #ff63a2;
+        0 0 5px #ff5b29,
+        0 0 10px #ff5b29,
+        0 0 15px #ff5b29,
+        0 0 20px #ff5b29,
+        0 0 25px #ff5b29,
+        0 0 30px #ff5b29;
 }
 
 @keyframes glitch{

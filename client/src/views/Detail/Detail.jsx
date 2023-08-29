@@ -19,7 +19,7 @@ const Detail = () => {
         dispatch(getDetail(id)).then((result) => {
             if (result.error) {
                 alert('Game not found')
-                navigate('/home')
+                navigate('*')
             }
         })
         return () => dispatch(deleteDetail());
@@ -28,7 +28,7 @@ const Detail = () => {
     useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        }, 4000)
+        }, 2000)
         return () => setLoading(true);
     },[]);
 
@@ -54,19 +54,15 @@ const Detail = () => {
                     <div className={styles.platforms}>
                         <h4>Platforms: </h4>
                         {detailedGame.platforms?.map((plat, index) => {
-                            return <ul key={index}>
-                                <li className={styles.listInfo}>{plat}</li>
-                            </ul>
+                            return <p className={styles.lpInfo} key={index}>{plat}</p>
                         })}
                     </div>
                     <div className={styles.genres}>
-                        <h4>Release Date: </h4><p className={styles.listInfo}>{detailedGame.releaseDate}</p>
-                        <h4>Rating: </h4><p className={styles.listInfo}>{detailedGame.rating}{"\u2B50"}</p>
+                        <h4>Release Date: </h4><p className={styles.pInfo}>📅 {detailedGame.releaseDate}</p>
+                        <h4>Rating: </h4><p className={styles.pInfo}>{detailedGame.rating} {"\u2B50"}</p>
                         <h4>Genres: </h4>
                         {detailedGame.genres?.map((gen, index) => {
-                            return <ul key={index}>
-                                <li className={styles.listInfo}>{gen}</li>
-                            </ul>
+                            return <p className={styles.lpInfo} key={index}>{gen}</p>
                         })}
                     </div>
                 </div>

@@ -66,8 +66,7 @@ const Form = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(postGame(newGame));
-        alert('Game created')
+        dispatch(postGame(newGame))
         setNewGame({
             name: "",
             description: "",
@@ -113,17 +112,6 @@ const Form = () => {
                         }
                     </div>
                     <div>
-                        <label htmlFor="description">Description: </label>
-                        <br />
-                        <textarea 
-                            name="description" 
-                            value={newGame.description}
-                            cols="30" 
-                            rows="8"
-                            onChange={handleChange}
-                        ></textarea>
-                    </div>
-                    <div>
                         <label htmlFor="platforms">Platforms: </label>
                         <br />
                         <input 
@@ -134,21 +122,6 @@ const Form = () => {
                         <br />
                         {
                             errors.platforms ? (<span>{errors.platforms}</span>) : ("")
-                        }
-                    </div>
-                    <div>
-                        <label htmlFor="releaseDate">Release Date: </label>
-                        <br />
-                        <input 
-                            type="date"
-                            min="1980-01-01"
-                            name="releaseDate"
-                            value={newGame.releaseDate}
-                            onChange={handleChange}
-                        />
-                        <br/>
-                        {
-                            errors.releaseDate ? (<span>{errors.releaseDate}</span>) : ("")
                         }
                     </div>
                     <div>
@@ -169,10 +142,40 @@ const Form = () => {
                         }
                     </div>
                     <div>
+                        <label htmlFor="description">Description: </label>
+                        <br />
+                        <textarea 
+                            name="description" 
+                            value={newGame.description}
+                            cols="70" 
+                            rows="8"
+                            onChange={handleChange}
+                        ></textarea>
+                        <br/>
+                        {
+                            errors.description ? (<span>{errors.description}</span>) : ("")
+                        }
+                    </div>
+                    <div>
+                        <label htmlFor="releaseDate">Release Date: </label>
+                        <br />
+                        <input 
+                            type="date"
+                            min="1980-01-01"
+                            name="releaseDate"
+                            value={newGame.releaseDate}
+                            onChange={handleChange}
+                        />
+                        <br/>
+                        {
+                            errors.releaseDate ? (<span>{errors.releaseDate}</span>) : ("")
+                        }
+                    </div>
+                    <div>
                         <label htmlFor="image">Image (URL): </label>
                         <br />
                         <input 
-                            type="text"
+                            type="url"
                             name="image"
                             value={newGame.image}
                             onChange={handleChange}

@@ -37,6 +37,11 @@ export const postGame = (game) => {
     return async () => {
         try {
             await axios.post(response, game)
+            .then(response => {
+                if (response.status === 200) {
+                    alert('Game created');                
+                }
+            })
         } catch (error) {
             alert("Failed to create game, please check the data.");
             return { error: error.message}

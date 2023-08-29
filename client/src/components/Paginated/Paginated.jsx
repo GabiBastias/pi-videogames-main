@@ -13,18 +13,21 @@ const Paginated = ({ currentPage, totalPages, onPageChange }) => {
     }
 
     const arrayTotalPage = [];
-    for (let i = 0; i < totalPages; i++) {
+    for (let i = 1; i < totalPages+1; i++) {
         arrayTotalPage.push(i);
     }
 
     const handleClick = (event) => {
-        onPageChange(event.target.value)
+        console.log(typeof event.target.value);
+        onPageChange(Number(event.target.value)-1)
     }
+
+    const pageNumbers = Number(currentPage) + 1;
 
     return(
         <div className={styles.divPaginated}>
             <div>
-                <h3>Page {currentPage + 1}</h3>
+                <h3>Page {pageNumbers}</h3>
             </div>
             <div className={styles.divButtons}>
                 {currentPage > 0 ? <button onClick={handlePrevPage}>Prev</button> : null}
@@ -33,7 +36,7 @@ const Paginated = ({ currentPage, totalPages, onPageChange }) => {
                                 key={index}
                                 onClick={handleClick}
                                 value={num}
-                                >{num + 1}</button>
+                                >{num}</button>
                 }) : null}     
                 {currentPage !== totalPages - 1 ? <button onClick={handleNextPage}>Next</button> : null}
             </div>
