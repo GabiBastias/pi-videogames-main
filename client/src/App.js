@@ -27,7 +27,7 @@ function App() {
             setListCharged(true);
         }
       });
-  },[dispatch, pathname])
+  },[dispatch, pathname]);
   
   return (
     <div className="App">
