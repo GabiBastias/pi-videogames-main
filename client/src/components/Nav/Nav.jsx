@@ -6,7 +6,7 @@ const Nav = () => {
     return(
         <div className={styles.divNav}>
             <nav className={styles.nav}>
-                <div>
+                <div className={styles.divDelorean}>
                     <Delorean />
                 </div>
                 <ul className={styles.navList}>

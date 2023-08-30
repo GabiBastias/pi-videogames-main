@@ -27,12 +27,10 @@ const BackgroundVideo = ({videoType}) => {
         else if (videoType === 'Mall_Japan') setVideo(Mall_Japan);
         else if (videoType === 'Volcano') setVideo(Volcano);
         else if (videoType === 'swap') setVideo(random[indexRandom])
-    },[videoType, indexRandom])
-    
-    
+    },[videoType, indexRandom]);
 
     return(
-        <div>
+        <div className={styles.videoContainer}>
             <video className={styles.videoBackground}  loop autoPlay muted>
                 <source src={video}/>
             </video>

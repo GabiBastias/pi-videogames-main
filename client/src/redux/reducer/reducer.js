@@ -1,7 +1,8 @@
-import { ALL_GAMES, ALL_GENRES, DELETE_DETAIL, FILTER, GET_DETAIL, ORDER, SET_PAGE, WORD_NAME } from "../actions/action-types";
+import { ALL_GAMES, ALL_GENRES, DELETE_DETAIL, FILTER, GET_DETAIL, GET_PLATFORMS, ORDER, SET_PAGE, WORD_NAME } from "../actions/action-types";
 
 const initialState = {
     allGamesList: [],
+    platforms: [],
     videogames: [],
     genres: [],
     detailedGame: {},
@@ -40,6 +41,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPage: action.payload
+            }
+        case GET_PLATFORMS:
+            return{
+                ...state,
+                platforms: action.payload
             }
         case ORDER:
             let orderedVideogames = [...state.videogames];

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_GAMES, ALL_GENRES, DELETE_DETAIL, FILTER, GET_DETAIL, ORDER, SET_PAGE, WORD_NAME } from './action-types';
+import { ALL_GAMES, ALL_GENRES, DELETE_DETAIL, FILTER, GET_DETAIL, GET_PLATFORMS, ORDER, SET_PAGE, WORD_NAME } from './action-types';
 
 // Games
 export const allGames = () => {
@@ -45,6 +45,21 @@ export const postGame = (game) => {
         } catch (error) {
             alert("Failed to create game, please check the data.");
             return { error: error.message}
+        }
+    }
+}
+
+export const getPlatforms = () => {
+    const response = '/videogames/platforms';
+    return async (dispatch) => {
+        try {
+            const { data } = await axios(response)
+            return dispatch ({
+                type: GET_PLATFORMS,
+                payload: data
+            })
+        } catch (error) {
+            return { error: error.message }
         }
     }
 }

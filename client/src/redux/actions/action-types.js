@@ -7,3 +7,4 @@ export const POST_GAME = 'POST_GAME';
 export const SET_PAGE = 'SET_PAGE';
 export const ORDER = 'ORDER';
 export const FILTER = 'FILTER';
+export const GET_PLATFORMS = 'GET_PLATFORMS';

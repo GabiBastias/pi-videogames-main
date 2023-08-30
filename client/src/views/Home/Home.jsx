@@ -9,11 +9,12 @@ import BackgroundVideo from '../../components/BackgroundVideo/BackgroundVideo';
 import imgPacman from '../../media/pictures/7VA.gif'
 const BACKGROUND_TYPE = 'Beyond';
 
-const Home = ({onGames}) => {
+const Home = () => {
     const videogames = useSelector(state => state.videogames);
     const currentPage = useSelector(state => state.currentPage);
     const genres = useSelector(state => state.genres);
     const dispatch = useDispatch();
+    const [onGames, setOnGames] = useState(false);
 
     const onSearch = async(word) => {
         if (word) {
@@ -30,17 +31,19 @@ const Home = ({onGames}) => {
         setTimeout(() => {
             setLoading(false)
         }, 100)
+        dispatch(allGames())
+        .then(response => {
+            if (response) {
+                setOnGames(true);
+            }
+        });
 
         return () => setLoading(true);
-    },[]);
+    },[dispatch]);
 
     if (loading) {
         return(<div className={styles.divBlack}></div>);
     };
-
-    if (!onGames) {
-        
-    }
 
     // Paginated
     const gamesPerPage = 15;
@@ -66,7 +69,9 @@ const Home = ({onGames}) => {
     
     return(
         <div className={styles.homeContainer}>
-            <BackgroundVideo videoType={BACKGROUND_TYPE}/>
+            <div className={styles.divBackground}>
+                <BackgroundVideo videoType={BACKGROUND_TYPE}/>
+            </div>
             <div className={styles.divHome}>
                 <div className={styles.divSearchBar}>
                     <SearchBar onSearch={onSearch}/>
@@ -115,14 +120,12 @@ const Home = ({onGames}) => {
                         </div>
                     }</ul> 
                 }
-                <div className={styles.paginated}>
-                    <Paginated
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        onPageChange ={onPageChange}
-                    />
-                </div>
             </div>
+            <Paginated
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange ={onPageChange}
+            />
         </div>
     )
 }

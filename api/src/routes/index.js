@@ -6,6 +6,7 @@ const getAllVideogames = require('../controllers/getAllVideogames');
 const getVideogame = require('../controllers/getVideogame');
 const createVideogame = require('../controllers/createVideogame');
 const getGenres = require('../controllers/getGenres');
+const getPlatforms = require('../controllers/getPlatforms')
 
 const router = Router();
 
@@ -13,6 +14,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/', getAllVideogames);
 router.get('/genres', getGenres);
+router.get('/platforms', getPlatforms);
 router.get('/detail/:id', getVideogame);
 router.post('/create', createVideogame);
 

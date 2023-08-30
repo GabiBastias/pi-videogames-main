@@ -1,31 +1,31 @@
 .divSearchBar{
-    margin: 1rem;
+    margin-top: 1vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
-    width: 22.6rem;
-    height: 2.5rem;
+    width: max-content;
+    height: auto;
     transition: 0.8s;
     border-radius: 3rem 3rem 3rem 3rem;
 }
 
 .divSearchBar:hover{
     box-shadow: rgba(196, 3, 214, 0.3) 0px 0px 0px 3px;
-    width: 28.2rem;
-    height: 3rem;
+    width: 400px;
+    height: 60px;
 
     .inputSearch{
-        width: 25rem;
-        height: 3rem;
+        width: 350px;
+        height: 60px;
     }
     .inputSearch::placeholder{
         color: rgba(150, 150, 150, 0.5);
     }
     
     .buttonSearch{
-        width: 3.1rem;
-        height: 3.1rem;
-        right: -0.15rem;
+        width: 60px;
+        height: 60px;
         color: rgba(201, 201, 201, 0.7);
         text-shadow: 3px 3px 5px rgb(187, 0, 140);
     }
@@ -33,8 +33,8 @@
 
 .inputSearch{
     background-color: rgba(126, 0, 94, 0.3);
-    width: 20rem;
-    height: 2.5rem;
+    width: 300px;
+    height: 45px;
     border-radius: 3rem 0rem 0rem 3rem;
     border: none;
     color: rgba(255, 95, 46, 0.76);
@@ -51,16 +51,14 @@
     background-color: rgba(126, 0, 94, 0.3);
     border-radius: 0rem 3rem 3rem 0rem;
     border: none;
-    width: 2.6rem;
-    height: 2.6rem;
-    position: absolute;
-    right: -0.25rem;
+    width: 45px;
+    height: 47px;
     text-align: center;
     transition: 0.8s;
     color: transparent;
     font-weight: bolder;
+    padding: 0px;
     cursor: pointer;
+    margin: 0px;
     font-size: 1.3rem;
 }
-
-

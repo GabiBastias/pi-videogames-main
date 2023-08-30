@@ -35,8 +35,8 @@
     transition: 0.8s;
 
     &:hover{
-        width: 350px;
-        height: 197px;
+        width: 330px;
+        height: 185.625px;
         filter: blur(0.2rem) brightness(40%);      
     }
     
@@ -46,6 +46,7 @@
     display: none;
     font-size: 1.5rem;
     margin: 0px;
+    top: 2rem;
     position: relative;
     z-index: 2;
     font-style: italic;
@@ -67,7 +68,7 @@
     
 .genres{
     display: none;
-    font-size: 1rem;
+    font-size: 16px;
     margin: 0px;
     position: relative;
     bottom: 3rem;

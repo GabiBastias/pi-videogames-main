@@ -2,20 +2,22 @@ import { useEffect, useState } from "react";
 import validation from "./validation";
 import { useDispatch, useSelector } from "react-redux";
 import styles from './form.module.css';
-import { postGame } from "../../redux/actions/actions";
+import { getPlatforms, postGame } from "../../redux/actions/actions";
 import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo";
 import Loader from "../../components/Loader/Loader";
 const BACKGROUND_TYPE = 'City';
 
 const Form = () => {
     const genres = useSelector(state => state.genres);
+    const platforms = useSelector(state => state.platforms);
     const [selectedGenres, setSelectedGenres] = useState([]);
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(getPlatforms())
         if (genres) {
             setSelectedGenres(genres);
         }
-    },[genres]);
+    },[genres, dispatch]);
 
     const [newGame, setNewGame] = useState({
         name: "",
@@ -99,6 +101,7 @@ const Form = () => {
 
     return(
         <div className={styles.divForm}>
+            {console.log(platforms)}
             <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.formBox}>
                 <div className={styles.bg}></div>

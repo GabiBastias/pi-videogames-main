@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
 import styles from './paginated.module.css'
+import { useSelector } from 'react-redux';
 
 const Paginated = ({ currentPage, totalPages, onPageChange }) => {
+const videogames = useSelector(state => state.videogames);
+
     const handlePrevPage = () => {
         if (currentPage > 0) {
             onPageChange(currentPage - 1);
@@ -18,9 +22,12 @@ const Paginated = ({ currentPage, totalPages, onPageChange }) => {
     }
 
     const handleClick = (event) => {
-        console.log(typeof event.target.value);
         onPageChange(Number(event.target.value)-1)
     }
+
+    useEffect(() => {
+        onPageChange(0)
+    },[videogames])
 
     const pageNumbers = Number(currentPage) + 1;
 
