@@ -3,6 +3,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    /* border: 2px solid white; */
+    width: 100vw;
+    height: auto;
 }
 
 .divGenres{
@@ -13,27 +16,47 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 50rem;
+    width: 50vw;
 }
 
-.formBox{
-    width: 60rem;
-    height: 50rem;
-    margin: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.formBox {
+    position: relative;
+    width: 60vw;
+    margin: 1vh;
     border-radius: 10px;
     transition: 0.8s;
-    &:hover{
-        box-shadow: rgba(196, 3, 214, 0.3) 0px 0px 0px 3px;
+  
+    &:hover {
+      box-shadow: rgba(196, 3, 214, 0.3) 0px 0px 0px 3px;
+    }
+}
+  
+  /* Estilos para .bg */
+.bg {
+    position: absolute;
+    top: 1vh;
+    left: 1vh;
+    width: 98%;
+    height: 97%;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+    border-radius: 10px;
+    transition: 0.8s;
+    box-sizing: border-box; /* Importante para incluir el borde en el cálculo del tamaño */
+    padding: 0vh;
+
+    @media screen and (max-width: 780px){
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
     }
 }
 
 .h2Form{
     position: relative;
-    top: -2rem;
+    top: -1vh;
     z-index: 2;
     transition: 0.8s;
     font-size: 30px;
@@ -60,28 +83,24 @@
     clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
     -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
-
-.bg {
-    position: absolute;
-    margin: 0.5rem;
-    width: 59.5rem;
-    height: 49.5rem;
-    z-index: 1;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(1px);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: 0.8s;
-    z-index: 0;
-}
+    
+.divName { grid-area: 1 / 1 / 2 / 2; }
+.divPlatforms { grid-area: 1 / 2 / 2 / 3; }
+.divRating { grid-area: 2 / 1 / 3 / 2; }
+.divReleaseDate { grid-area: 2 / 2 / 3 / 3; }
+.divDescription { grid-area: 3 / 1 / 4 / 3; }
+.divImage { grid-area: 4 / 1 / 5 / 3; }
+.containerGenres { grid-area: 5 / 1 / 6 / 3; }
 
 .formDetail{
-    display: flex;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto-fit, minmax(100px, 30px));;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-items: center;
     justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
     z-index: 1;
 
     & label{
@@ -92,15 +111,16 @@
     }
 
     & span{
-        margin: 0px;
+        position: relative;
+        padding: 0px;
         color: #fff;
         text-shadow: 3px 3px 20px #ff99cc,
             -2px 1px 30px #ff99cc;
     }
 
     & input{
-        width: 15rem;
-        margin: 1rem;
+        width: 15vw;
+        margin: 1vh;
         appearance: none;
         border: none;
         outline: none;
@@ -113,7 +133,7 @@
 
     & input[type=range] {
         width: 100%;
-        height: 15px;
+        height: auto;
         border-radius: 5px;
         background: #d3d3d3;
         outline: none;
@@ -126,13 +146,15 @@
     }
 
     & input[type=url]{
-        width: 50rem;
+        width: 50vw;
     }
 
     & textarea{
         appearance: none;
         border: none;
         outline: none;
+        width: 25vw;
+        height: 10vh;
         border-bottom: .2em solid #E91E63;
         background: rgba(233, 30, 99, .2);
         border-radius: .2em .2em 0 0;
@@ -140,9 +162,14 @@
         color: #ffaec9;
         font-family: Arial, Helvetica, sans-serif;
     }
+
+    @media screen and (max-width: 780px){
+        grid-row-gap: 4vh;
+    }
 }
 
 .buttonCreate {
+    grid-area: 6 / 1 / 7 / 3;
     position: relative;
     width: 5rem;
     height: 2rem;
@@ -167,6 +194,7 @@
     touch-action: manipulation;
     white-space: nowrap;
     cursor: pointer;
+    margin: 1vh;
 }
 
 .buttonCreate:active,
@@ -179,6 +207,7 @@
     border-radius: 6px;
     width: 100%;
     height: 100%;
+    margin: 0vh;
     transition: 300ms;
     justify-content: center;
     align-items: center;

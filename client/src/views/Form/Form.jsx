@@ -107,7 +107,7 @@ const Form = () => {
                 <div className={styles.bg}></div>
                 <h2 className={styles.h2Form}>Create Videogame</h2>
                 <form className={styles.formDetail} onSubmit={handleSubmit}>
-                    <div>
+                    <div className={styles.divName}>
                         <label htmlFor="name">Name: </label>
                         <br />
                         <input 
@@ -118,10 +118,10 @@ const Form = () => {
                         />
                         <br/>
                         {
-                            errors.name ? (<span>{errors.name}</span>) : ("")
+                            errors.name ? (<span className={styles.errorSpan}>{errors.name}</span>) : ("")
                         }
                     </div>
-                    <div>
+                    <div className={styles.divPlatforms}>
                         <label htmlFor="platforms">Platforms: </label>
                         <br />
                         <input 
@@ -131,10 +131,10 @@ const Form = () => {
                         />
                         <br />
                         {
-                            errors.platforms ? (<span>{errors.platforms}</span>) : ("")
+                            errors.platforms ? (<span className={styles.errorSpan}>{errors.platforms}</span>) : ("")
                         }
                     </div>
-                    <div>
+                    <div className={styles.divRating}> 
                         <label htmlFor="rating">Rating: </label>
                         <br />
                         <input 
@@ -145,28 +145,26 @@ const Form = () => {
                             onChange={handleChange}
                         />
                         <br />
-                        <span>{(newGame.rating)}</span>
+                        <span className={styles.errorSpan}>{(newGame.rating)}</span>
                         <br/>
                         {
-                            errors.rating ? (<span>{errors.rating}</span>) : ("")
+                            errors.rating ? (<span className={styles.errorSpan}>{errors.rating}</span>) : ("")
                         }
                     </div>
-                    <div>
+                    <div className={styles.divDescription}>
                         <label htmlFor="description">Description: </label>
                         <br />
                         <textarea 
                             name="description" 
                             value={newGame.description}
-                            cols="70" 
-                            rows="8"
                             onChange={handleChange}
                         ></textarea>
                         <br/>
                         {
-                            errors.description ? (<span>{errors.description}</span>) : ("")
+                            errors.description ? (<span className={styles.errorSpan}>{errors.description}</span>) : ("")
                         }
                     </div>
-                    <div>
+                    <div className={styles.divReleaseDate}>
                         <label htmlFor="releaseDate">Release Date: </label>
                         <br />
                         <input 
@@ -178,10 +176,10 @@ const Form = () => {
                         />
                         <br/>
                         {
-                            errors.releaseDate ? (<span>{errors.releaseDate}</span>) : ("")
+                            errors.releaseDate ? (<span className={styles.errorSpan}>{errors.releaseDate}</span>) : ("")
                         }
                     </div>
-                    <div>
+                    <div className={styles.divImage}>
                         <label htmlFor="image">Image (URL): </label>
                         <br />
                         <input 
@@ -192,10 +190,10 @@ const Form = () => {
                         />
                         <br/>
                         {
-                            errors.image ? (<span>{errors.image}</span>) : ("")
+                            errors.image ? (<span className={styles.errorSpan}>{errors.image}</span>) : ("")
                         }
                     </div>
-                    <div>
+                    <div className={styles.containerGenres}>
                         <label htmlFor="">Genre/s: </label>
                         <br />
                         <div className={styles.divGenres}>
@@ -214,7 +212,7 @@ const Form = () => {
                             <br />
                         </div>
                         {
-                            newGame.genres.length < 1 ? (<span>{errors.genres}</span>) : ("")
+                            newGame.genres.length < 1 ? (<span className={styles.errorSpan}>{errors.genres}</span>) : ("")
                         }
                     </div>
                     <button className={styles.buttonCreate} onClick={ereaseGenres} type="submit"><span>Create</span></button>
