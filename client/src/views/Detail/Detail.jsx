@@ -13,7 +13,7 @@ const Detail = () => {
     const detailedGame = useSelector(state => state.detailedGame);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
-    const descriptionHtml = { __html: detailedGame.description };
+    const parser = new DOMParser();
 
     useEffect(()=>{
         dispatch(getDetail(id)).then((result) => {
@@ -36,34 +36,41 @@ const Detail = () => {
         return(<div><Loader/></div>);
     };
 
-    return(
+    const doc = parser.parseFromString(detailedGame.description, 'text/html');
+    const paragraphs = doc.querySelectorAll('p');
+    const parsedContent = [];
+    paragraphs.forEach(paragraph => {
+        parsedContent.push(paragraph.textContent);
+    });
+
+    return( 
         <div className={styles.divDetail}>
             <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.infoBorder}>
                 <div className={styles.bg}></div>
-                <div className={styles.name}>
-                        <h2 className={styles.h2Name}>{detailedGame.name}</h2>
-                        <div 
-                            dangerouslySetInnerHTML={descriptionHtml}
-                        ></div>
-                </div>
+                <h2 className={styles.h2Name}>{detailedGame.name}</h2>
                 <div className={styles.divInfo}>
                     <div className={styles.divImg}>
                         <img className={styles.imgDetail} src={detailedGame.image} alt={detailedGame.name} />
                     </div>
-                    <div className={styles.platforms}>
-                        <h4>Platforms: </h4>
-                        {detailedGame.platforms?.map((plat, index) => {
-                            return <p className={styles.lpInfo} key={index}>{plat}</p>
-                        })}
+                    <div className={styles.divDescription}>
+                        <p>{parsedContent}</p>
                     </div>
-                    <div className={styles.genres}>
-                        <h4>Release Date: </h4><p className={styles.pInfo}>📅 {detailedGame.releaseDate}</p>
-                        <h4>Rating: </h4><p className={styles.pInfo}>{detailedGame.rating} {"\u2B50"}</p>
-                        <h4>Genres: </h4>
-                        {detailedGame.genres?.map((gen, index) => {
-                            return <p className={styles.lpInfo} key={index}>{gen}</p>
-                        })}
+                    <div className={styles.divPlatGenres}>
+                        <div className={styles.platforms}>
+                            <h4>Platforms: </h4>
+                            {detailedGame.platforms?.map((plat, index) => {
+                                return <p className={styles.lpInfo} key={index}>{plat}</p>
+                            })}
+                        </div>
+                        <div className={styles.genres}>
+                            <h4>Release Date: </h4><p className={styles.pInfo}>📅 {detailedGame.releaseDate}</p>
+                            <h4>Rating: </h4><p className={styles.pInfo}>{detailedGame.rating} {"\u2B50"}</p>
+                            <h4>Genres: </h4>
+                            {detailedGame.genres?.map((gen, index) => {
+                                return <p className={styles.lpInfo} key={index}>{gen}</p>
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -98,10 +98,9 @@ const Form = () => {
     },[])
 
     if (loading) return (<div><Loader /></div>)
-
+    
     return(
         <div className={styles.divForm}>
-            {console.log(platforms)}
             <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             <div className={styles.formBox}>
                 <div className={styles.bg}></div>

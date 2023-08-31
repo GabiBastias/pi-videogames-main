@@ -1,5 +1,7 @@
 .divDetail{
     width: 100%;
+    height: max-content;
+    /* border: 2px solid red; */
     background-color: transparent;
     display: flex;
     border-radius: 14px;
@@ -12,15 +14,19 @@
 
 .infoBorder{
     position: relative;
-    top: 1rem;
-    width: 100rem;
-    height: 50rem;
+    width: 70vw;
+    height: auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     border-radius: 14px;
     z-index: 1111;
     overflow: hidden;
     flex-wrap: nowrap;
     transition: 0.8s;
+    margin-bottom: 2vh;
+    margin-top: 1vh;
     &:hover{
         box-shadow: rgba(255, 95, 46, 0.76) 0px 0px 0px 3px;
     }
@@ -28,51 +34,37 @@
 
 .bg {
     position: absolute;
-    margin: 0.3rem;
-    width: 99.5rem;
-    height: 49.5rem;
-    z-index: 1;
+    top: 0.5vw;
+    left: 0.5vw;
+    border-left: 1vw;
+    border-right: 1vw;
+    border-top: 1vh;
+    border-bottom: 1vh;
+    width: 99%;
+    height: 97%;
+    z-index: -1;
     background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1px);
     border-radius: 10px;
-    overflow: hidden;
     transition: 0.8s;
-}
+    box-sizing: border-box; /* Importante para incluir el borde en el cálculo del tamaño */
+    padding: 0vh;
 
-.name{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem;
-    width: 45rem;
-    height: 45rem;
-    padding: 0rem;
-    z-index: 3;
-}
-
-.imgDetail{
-    width: 30rem;
-    border-radius: 5%;
-    display: flex;
-    position: relative;
-    z-index: 2;
-    box-shadow: rgba(240, 107, 46, 0.4) 5px 5px, rgba(240, 107, 46, 0.3) 10px 10px, rgba(240, 107, 46, 0.2) 15px 15px, rgba(240, 107, 46, 0.1) 20px 20px, rgba(240, 107, 46, 0.05) 25px 25px;
-    transition: 0.8s;
-    &:hover{
-        width: 35rem;
+    @media screen and (max-width: 780px){
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
     }
 }
 
 .divInfo {
-    z-index: 2;
-    padding: 2rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto-fit);;
     grid-auto-flow: row;
-    width: 45rem;
-    height: 45rem;
+    justify-items: center;
+    justify-content: center;
     grid-template-areas:
       "divImg divImg"
       "platforms genres"
@@ -80,30 +72,90 @@
     transition: 0.8s;
 }
 
-h4{
-    margin: 0px;
+@media screen and (max-width: 780px){
+    .infoBorder{
+        width: 90%;
+    }
+
+    .divInfo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .divDescription{
+        width: 90vw !important;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.divImg{
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+.imgDetail{
+    position: relative;
+    width: 50vh;
+    height: max-content;
+    border-radius: 5%;
+    display: flex;
+    z-index: 2;
+    box-shadow: rgba(240, 107, 46, 0.4) 5px 5px, rgba(240, 107, 46, 0.3) 10px 10px, rgba(240, 107, 46, 0.2) 15px 15px, rgba(240, 107, 46, 0.1) 20px 20px, rgba(240, 107, 46, 0.05) 25px 25px;
     transition: 0.8s;
-    font-size: 20px;
-    color: rgba(255, 255, 255, 0.7);
-    text-shadow: 3px 3px 5px rgba(255, 95, 46, 0.76);
-    animation: glitch 1s linear infinite;
+    margin: 1vh;
+    &:hover{
+        width: 65vh;
+    }
+    @media screen and (max-width: 780px){
+        width: 30vh;
+        &:hover{
+            width: 35vh;
+        }
+    }
+    
 }
-h4:before,
-h4:after{
-    content: attr(title);
-    position: absolute;
-    left: 0;
+
+.divDescription{
+    width: 50vw;
 }
-  
-h4:before{
-    animation: glitchTop 1s linear infinite;
-    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+
+.divDescription p{
+    margin: 1vw;
+    font-size: 1rem;
+    text-align: justify;
+    color:rgba(255, 255, 255, 0.7);
+    text-shadow:
+        0 0 5px #ff5b29,
+        0 0 10px #ff5b29,
+        0 0 15px #ff5b29,
+        0 0 20px #ff5b29,
+        0 0 25px #ff5b29,
+        0 0 30px #ff5b29;
 }
-h4:after{
-    animation: glitchBotom 1.5s linear infinite;
-    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+
+.divPlatGenres{
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    gap: 3vw;
+    margin: 1vw;
+    width: 15vw;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.genres{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.imgDetail:hover,
+.divInfo:hover {
+  z-index: 4;
 }
 
 .h2Name{
@@ -136,41 +188,6 @@ h4:after{
     -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
 
-.imgDetail:hover,
-.divInfo:hover {
-  z-index: 4;
-}
-
-
-.name p{
-    font-size: 1rem;
-    color:rgba(255, 255, 255, 0.7);
-    text-align:center;
-    text-shadow:
-        0 0 5px #ff5b29,
-        0 0 10px #ff5b29,
-        0 0 15px #ff5b29,
-        0 0 20px #ff5b29,
-        0 0 25px #ff5b29,
-        0 0 30px #ff5b29;
-}
-
-.platforms{ 
-    grid-area: platforms;
-}
-
-.genres{
-    grid-area: genres;
-}
-
-.divImg{
-    grid-area: divImg;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-}
-
 .lpInfo{
     margin: 5px;
     font-size: 0.8rem;
@@ -197,6 +214,32 @@ h4:after{
         0 0 20px #ff5b29,
         0 0 25px #ff5b29,
         0 0 30px #ff5b29;
+}
+
+h4{
+    margin: 0px;
+    transition: 0.8s;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 3px 3px 5px rgba(255, 95, 46, 0.76);
+    animation: glitch 1s linear infinite;
+}
+h4:before,
+h4:after{
+    content: attr(title);
+    position: absolute;
+    left: 0;
+}
+  
+h4:before{
+    animation: glitchTop 1s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+h4:after{
+    animation: glitchBotom 1.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
 
 @keyframes glitch{

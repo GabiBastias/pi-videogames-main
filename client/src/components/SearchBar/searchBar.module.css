@@ -31,6 +31,16 @@
     }
 }
 
+@media screen and (max-width: 780px) {
+    .divSearchBar{
+        width: 80vw;
+    }
+
+    .divSearchBar:hover{
+        width: 90vw;
+    }
+}
+
 .inputSearch{
     background-color: rgba(126, 0, 94, 0.3);
     width: 300px;
