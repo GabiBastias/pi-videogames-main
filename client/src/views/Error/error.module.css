@@ -8,6 +8,16 @@
   z-index: 10;
 }
 
+@media screen and (max-width: 780px) {
+  .h1Name{
+    top: -10vh;
+  }
+
+  .pName{
+    top: -10vh;
+  }
+}
+
 .divError{
     width: 100vw;
     height: 100vh;
@@ -67,6 +77,7 @@
 }
 
 .h1Name{
+    position: relative;
     transition: 0.8s;
     font-size: 150px;
     padding: 0px;
@@ -99,6 +110,7 @@
 }
 
 .pName{
+  position: relative;
     transition: 0.8s;
     font-size: 40px;
     margin: 0px;

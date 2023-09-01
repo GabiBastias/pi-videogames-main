@@ -2,47 +2,69 @@
     width: 100%;
     background-color: transparent;
     display: flex;
-    border-radius: 14px;
     align-items: center;
     justify-content: center;
-    margin: 0rem;
     width: 100hv;
-    height: 1hv;
 }
 
 .infoPanel{
-    margin: 0.5rem;
-    width: 90rem;
-    height: 50rem;
+    position: relative;
+    width: 70vw;
+    height: auto;
     display: flex;
-    border-radius: 14px;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    border-radius: 14px;
     z-index: 1111;
     overflow: hidden;
     flex-wrap: nowrap;
-    padding: 0.2rem;
-    box-shadow: rgba(255, 95, 46, 0.76) 0px 0px 0px 2px;
+    transition: 0.8s;
+    margin-bottom: 2vh;
+    margin-top: 1vh;
+    &:hover{
+        box-shadow: rgba(255, 95, 46, 0.76) 0px 0px 0px 3px;
+    }
 }
 
 .bg {
     position: absolute;
-    width: 90rem;
-    height: 50rem;
-    z-index: 1;
+    border: 1vw;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(1px);
     border-radius: 10px;
-    overflow: hidden;
     transition: 0.8s;
+    box-sizing: border-box; /* Importante para incluir el borde en el cálculo del tamaño */
+    padding: 0vh;
+
+    @media screen and (max-width: 780px){
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+    }
+}
+
+.divPanelInfo{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-rows: repeat(2, 1fr); */
+    grid-template-rows: (auto-fit, minmax(100px, 30px));
+    justify-items: center;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
 
 .divP{
-    top: 13rem;
-    left: 16rem;
-    position: absolute;
-    width: 50rem;
+    position: relative;
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 1vw;
+    width: 70vh;
 }
 
 .paragraph{
@@ -58,7 +80,48 @@
         0 0 30px #ff63a2;
 }
 
+.aboutProfile{
+    position: relative;
+    z-index: 2;
+    & img{
+        border-radius: 3rem;
+        width: 20vw;
+        filter: blur(2px);
+        transition: 0.8s;
+        &:hover{
+            width: 18vw;
+            filter: none;
+            box-shadow: rgba(255, 95, 46, 0.76) 0px 0px 0px 3px;
+        }
+    }
+}
+
+.divImg{
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    filter: blur(2px);
+    transition: 0.8s;
+    width: max-content;
+    height: max-content;
+    padding: 0.5rem;
+    & img{
+        width: 50px;
+        cursor: pointer;
+        transition: 0.5s;
+        &:hover{
+            width: 60px;
+        }
+    }
+    &:hover{
+        filter: none;
+        background-color: rgba(255, 145, 0, 0.1);
+        border-radius: 1.5rem;
+    }
+}
+
 .h2Name{
+    position: relative;
     z-index: 2;
     transition: 0.8s;
     font-size: 30px;
@@ -68,6 +131,34 @@
         font-size: 40px;
     }
     animation: glitch 1s linear infinite;
+}
+
+@media screen and (max-width: 1360px) {
+
+    .infoPanel{
+        width: 90%;
+    }
+
+    .divPanelInfo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .divP{
+        width: 90%
+    }
+
+    .aboutProfile{
+        & img{
+            width: 35vw;
+            &:hover{
+                width: 30vw;
+            }
+        }
+    }
+    
 }
   
 .h2Name:before,
@@ -91,48 +182,4 @@
 
 .divP{
     z-index: 2;
-}
-
-.aboutProfile{
-    top: 13rem;
-    right: 22rem;
-    position: absolute;
-    z-index: 2;
-    & img{
-        border-radius: 3rem;
-        width: 25rem;
-        filter: blur(2px);
-        transition: 0.8s;
-        &:hover{
-            width: 23rem;
-            filter: none;
-            box-shadow: rgba(255, 95, 46, 0.76) 0px 0px 0px 3px;
-        }
-    }
-}
-
-.divImg{
-    top: 33rem;
-    left: 16rem;
-    position: absolute;
-    bottom: 1rem;
-    z-index: 2;
-    filter: blur(2px);
-    transition: 0.8s;
-    width: max-content;
-    height: max-content;
-    padding: 0.5rem;
-    & img{
-        width: 50px;
-        cursor: pointer;
-        transition: 0.5s;
-        &:hover{
-            width: 60px;
-        }
-    }
-    &:hover{
-        filter: none;
-        background-color: rgba(255, 145, 0, 0.1);
-        border-radius: 1.5rem;
-    }
 }

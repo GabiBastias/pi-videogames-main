@@ -1,7 +1,6 @@
 .divDetail{
     width: 100%;
     height: max-content;
-    /* border: 2px solid red; */
     background-color: transparent;
     display: flex;
     border-radius: 14px;
@@ -34,12 +33,7 @@
 
 .bg {
     position: absolute;
-    top: 0.5vw;
-    left: 0.5vw;
-    border-left: 1vw;
-    border-right: 1vw;
-    border-top: 1vh;
-    border-bottom: 1vh;
+    border: 1vw;
     width: 99%;
     height: 97%;
     z-index: -1;
