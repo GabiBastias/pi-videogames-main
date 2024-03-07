@@ -10,7 +10,7 @@ const Nav = () => {
                     <Delorean />
                 </div>
                 <ul className={styles.navList}>
-                    <li><NavLink className={styles.aNav} to='/home'>Home</NavLink></li>
+                    <li><NavLink className={styles.aNav} to='/'>Home</NavLink></li>
                     <li><NavLink className={styles.aNav} to='/form'>Create</NavLink></li>
                     <li><NavLink className={styles.aNav} to='/about'>About</NavLink></li>
                 </ul>
