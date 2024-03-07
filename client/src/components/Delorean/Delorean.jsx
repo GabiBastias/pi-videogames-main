@@ -3,7 +3,7 @@ import delorean from '../../media/pictures/c9b7d554678d7973a65325cc14a6fe-unscre
 
 const Delorean = () => {
     return(
-        <Link to='/home'>
+        <Link to='/'>
             <img style={{height: '100px'}} src={delorean} alt='Delorean'/>
         </Link>
     )
