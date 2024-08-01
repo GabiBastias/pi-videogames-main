@@ -9,6 +9,7 @@ const getVideogame = async(req, res) => {
     try {
         if (id.length > 7) {
             const gameDB = await Videogame.findByPk(id, {include: [Genres]});
+            console.log(gameDB);
             if(gameDB) { 
                 const titleDB = {
                     id: gameDB.id,
