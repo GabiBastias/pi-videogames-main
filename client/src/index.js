@@ -7,7 +7,8 @@ import './index.css';
 import store from './redux/store/store';
 import axios from 'axios';
 
-axios.defaults.baseURL = "https://pi-videogames-main-2803.onrender.com";
+axios.defaults.baseURL = "http://localhost:3001";
+// axios.defaults.baseURL = "https://pi-videogames-main-2803.onrender.com";
 
 ReactDOM.render(
   <Provider store={store}>

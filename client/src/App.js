@@ -5,7 +5,7 @@ import Nav from './components/Nav/Nav';
 import Detail from './views/Detail/Detail';
 import Form from './views/Form/Form';
 import About from './views/About/About';
-import { allGenres } from './redux/actions/actions';
+import { allGenres, getPlatforms } from './redux/actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Error from './views/Error/Error';
@@ -19,6 +19,7 @@ function App() {
   
   useEffect(() => {
       dispatch(allGenres());
+      dispatch(getPlatforms());
   },[dispatch, pathname]);
   
   return (

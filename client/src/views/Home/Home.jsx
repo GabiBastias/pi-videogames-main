@@ -13,6 +13,7 @@ const Home = () => {
     const videogames = useSelector(state => state.videogames);
     const currentPage = useSelector(state => state.currentPage);
     const genres = useSelector(state => state.genres);
+    
     const dispatch = useDispatch();
     const [onGames, setOnGames] = useState(false);
 

@@ -2,18 +2,21 @@ import { useEffect, useState } from "react";
 import validation from "./validation";
 import { useDispatch, useSelector } from "react-redux";
 import styles from './form.module.css';
-import { getPlatforms, postGame } from "../../redux/actions/actions";
+import { postGame } from "../../redux/actions/actions";
 import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo";
-import Loader from "../../components/Loader/Loader";
+// import Loader from "../../components/Loader/Loader";
 const BACKGROUND_TYPE = 'City';
 
 const Form = () => {
     const genres = useSelector(state => state.genres);
     const platforms = useSelector(state => state.platforms);
+    const [selectedPlatforms, setSelectedPlatforms] = useState([]);
     const [selectedGenres, setSelectedGenres] = useState([]);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getPlatforms())
+        if (platforms) {
+            setSelectedPlatforms(platforms);
+        }
         if (genres) {
             setSelectedGenres(genres);
         }
@@ -40,15 +43,25 @@ const Form = () => {
     });
 
     const handleChange = (event) => {
-        if (event.target.name === "platforms") {
-            let newPlatforms = (event.target.value).split(" ");
-            setNewGame({...newGame, platforms: newPlatforms});
-        } else if (event.target.name === "rating") {
+        if (event.target.name === "rating") {
             setNewGame({...newGame, rating: (Number(event.target.value))/20});
         } else {
             setNewGame({...newGame, [event.target.name]: event.target.value});
         };
         setErrors(validation({...newGame, [event.target.name]: event.target.value}));
+    }
+
+    const handlePlatform = (event) => {
+        const platFinder = selectedPlatforms.find(plat => {
+            return plat === event.target.name;
+        });
+        
+        if (newGame.platforms.includes(platFinder)) {
+            const platFilter = newGame.platforms.filter(gen => gen !== platFinder);
+            setNewGame({...newGame, platforms: platFilter});
+        } else {
+            setNewGame({...newGame, platforms: [...newGame.platforms, platFinder]});
+        };
     }
 
     const ereaseGenres = () => {
@@ -87,17 +100,17 @@ const Form = () => {
         });
     };
 
-    // Loading
-    const [loading, setLoading] = useState(true);
+    // // Loading
+    // const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-        return () => setLoading(true)
-    },[])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setLoading(false);
+    //     }, 1000);
+    //     return () => setLoading(true)
+    // },[])
 
-    if (loading) return (<div><Loader /></div>)
+    // if (loading) return (<div><Loader /></div>)
     
     return(
         <div className={styles.divForm}>
@@ -123,11 +136,22 @@ const Form = () => {
                     <div className={styles.divPlatforms}>
                         <label htmlFor="platforms">Platforms: </label>
                         <br />
-                        <input 
-                            type="text"
-                            name="platforms"
-                            onChange={handleChange}
-                        />
+                        <div className={styles.divPlatLabels}>
+                        {
+                            platforms ? platforms.map((plat, index) => {
+                                return <div 
+                                    key={index}
+                                    className={styles.divCheckPlatforms}>
+                                    <input 
+                                        type="checkbox"
+                                        name={plat}
+                                        onClick={handlePlatform}
+                                    />
+                                    <label>{plat}</label>
+                                </div>;
+                            }) : null
+                        } 
+                        </div>
                         <br />
                         {
                             errors.platforms ? (<span className={styles.errorSpan}>{errors.platforms}</span>) : ("")

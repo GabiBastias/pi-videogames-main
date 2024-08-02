@@ -16,7 +16,7 @@ const getPlatforms = async(req, res) => {
         const plataformas = [];
         platforms.forEach(function(plat) {
             plataformas.push(plat);
-        })
+        }) 
         res.status(200).json(plataformas);
     } catch (error) {
         res.status(404).json({error: error.message});
