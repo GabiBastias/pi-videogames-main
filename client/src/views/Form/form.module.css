@@ -93,11 +93,30 @@
 .divImage { grid-area: 4 / 1 / 5 / 3; }
 .containerGenres { grid-area: 5 / 1 / 6 / 3; }
 
+@media screen and (max-width: 780px) {
+
+    .formDetail{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(7, 1fr);
+    }
+    .divName { grid-area: 1 / 1 / 2 / 2; }
+    .divPlatforms { grid-area: 2 / 1 / 3 / 2; }
+    .divRating { grid-area: 3 / 1 / 4 / 2; }
+    .divReleaseDate { grid-area: 4 / 1 / 5 / 2; }
+    .divDescription { grid-area: 5 / 1 / 6 / 2; }
+    .divImage { grid-area: 6 / 1 / 7 / 2; }
+    .containerGenres { grid-area: 7 / 1 / 8 / 2; }
+
+    .divPlatLabels{
+        
+    }
+}
+
 .formDetail{
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(auto-fit, minmax(200px, 30px));;
+    grid-template-rows: repeat(auto-fit, minmax(200px, 30px));
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     justify-items: center;
@@ -122,7 +141,6 @@
     & input{
         width: 15vw;
         margin: 1vh;
-        /* appearance: none; */
         border: none;
         outline: none;
         border-bottom: .2em solid #E91E63;
@@ -181,6 +199,12 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+    @media screen and (max-width: 780px){
+        width: 50vw;
+        gap: 10px;
+        
+    }
 }
 
 .divCheckPlatforms{
@@ -190,6 +214,14 @@
     flex-direction: row;
     & label{
         font-size: 12px;
+
+        @media screen and (max-width: 1024px){
+            font-size: 10px;
+        }
+
+        @media screen and (max-width: 600px){
+            font-size: 6px;
+        }
     }
 }
 
