@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from './form.module.css';
 import { postGame } from "../../redux/actions/actions";
 import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo";
-// import Loader from "../../components/Loader/Loader";
 const BACKGROUND_TYPE = 'City';
 
 const Form = () => {
@@ -44,7 +43,7 @@ const Form = () => {
 
     const handleChange = (event) => {
         if (event.target.name === "rating") {
-            setNewGame({...newGame, rating: (Number(event.target.value))/20});
+            setNewGame({...newGame, rating: (Number(event.target.value))/10});
         } else {
             setNewGame({...newGame, [event.target.name]: event.target.value});
         };
@@ -99,18 +98,6 @@ const Form = () => {
             genres: []
         });
     };
-
-    // // Loading
-    // const [loading, setLoading] = useState(true);
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setLoading(false);
-    //     }, 1000);
-    //     return () => setLoading(true)
-    // },[])
-
-    // if (loading) return (<div><Loader /></div>)
     
     return(
         <div className={styles.divForm}>
@@ -135,7 +122,6 @@ const Form = () => {
                     </div>
                     <div className={styles.divPlatforms}>
                         <label htmlFor="platforms">Platforms: </label>
-                        <br />
                         <div className={styles.divPlatLabels}>
                         {
                             platforms ? platforms.map((plat, index) => {
@@ -152,7 +138,6 @@ const Form = () => {
                             }) : null
                         } 
                         </div>
-                        <br />
                         {
                             errors.platforms ? (<span className={styles.errorSpan}>{errors.platforms}</span>) : ("")
                         }
@@ -162,8 +147,9 @@ const Form = () => {
                         <br />
                         <input 
                             type="range"
+                            value={(newGame.rating)*10}
                             min="0"
-                            max="100"
+                            max="50"
                             name="rating"
                             onChange={handleChange}
                         />

@@ -1,7 +1,5 @@
 .divSearchBar{
-    margin-top: 1vh;
     display: flex;
-    align-items: center;
     justify-content: center;
     position: relative;
     width: max-content;
@@ -28,16 +26,6 @@
         height: 60px;
         color: rgba(201, 201, 201, 0.7);
         text-shadow: 3px 3px 5px rgb(187, 0, 140);
-    }
-}
-
-@media screen and (max-width: 780px) {
-    .divSearchBar{
-        width: 80vw;
-    }
-
-    .divSearchBar:hover{
-        width: 90vw;
     }
 }
 

@@ -64,7 +64,8 @@ const Home = () => {
         if (event.target.value === 'DataBase') {
             dispatch(setPage(0));
         }
-        dispatch(filterGames(event.target.value));
+        
+        dispatch(filterGames(event.target.name, event.target.checked));
 
     };
     
@@ -74,11 +75,8 @@ const Home = () => {
                 <BackgroundVideo videoType={BACKGROUND_TYPE}/>
             </div>
             <div className={styles.divHome}>
-                <div className={styles.divSearchBar}>
-                    <SearchBar onSearch={onSearch}/>
-                </div>
                 <div className={styles.divSelect}>
-                    <div>
+                    <div className={styles.divFilters}>
                         <h3>Order</h3>
                         <select className={styles.select} onChange={handlerOrder}>
                             <option value="Default">Default</option>
@@ -88,9 +86,28 @@ const Home = () => {
                             <option value="RatingDown">Rating Down</option>
                         </select>
                     </div>
-                    <div>
+                    <div className={styles.divSearchBar}>
+                        <SearchBar onSearch={onSearch}/>
+                    </div>
+                    <div className={styles.divFilters}>
                         <h3>Filters</h3>
-                        <select className={styles.select} onChange={handleFilter}>
+                        <div className={styles.divCheckbox}>
+                            {genres && genres.map(gen => {
+
+                                return <div
+                                    key={gen.id}>    
+                                    <input 
+                                        type='checkbox'
+                                        name={gen.name}
+                                        onClick={handleFilter}>
+                                    </input>
+                                    <label className={styles.labelFilters}>{gen.name}</label>
+                                    
+                                </div>
+                            })}
+                        </div>
+
+                        {/* <select className={styles.select} onChange={handleFilter}>
                             {
                                 genres && genres.map((gen) =>{
                                     return <option key={gen.id} value={gen.name}>{gen.name}</option>
@@ -101,7 +118,7 @@ const Home = () => {
                             <option value="All">All Games</option>
                             <option value="DataBase">DataBase</option>
                             <option value="API">API</option>
-                        </select>
+                        </select> */}
                     </div>
                 </div>
                 { onGames === false ? 

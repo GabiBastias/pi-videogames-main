@@ -2,8 +2,9 @@ import { ALL_GAMES, ALL_GENRES, DELETE_DETAIL, FILTER, GET_DETAIL, GET_PLATFORMS
 
 const initialState = {
     allGamesList: [],
-    platforms: [],
     videogames: [],
+    filteredGames: [],
+    platforms: [],
     genres: [],
     detailedGame: {},
     currentPage: 0
@@ -83,26 +84,36 @@ const reducer = (state = initialState, action) => {
         case FILTER:
             const filteredGames = [...state.videogames];
             let arrayOfGenres = [];
-            const match = state.genres.find(gen => gen.name === action.payload);
-            if (match) {
-                arrayOfGenres = filteredGames.filter(game => {
-                    return game.genres.includes(action.payload);
-                })
-            } else if (action.payload === 'DataBase'){
-                arrayOfGenres = filteredGames.filter(game => {
-                    return typeof(game.id) === 'string';
-                })
-            } else if (action.payload === 'API'){
-                arrayOfGenres = filteredGames.filter(game => {
-                    return typeof(game.id) === 'number';
-                })
-            } else if (action.payload === 'All') {
-                arrayOfGenres = state.allGamesList;
+
+            if (action.payload.value === true) {
+                state.filteredGames = state.videogames;
+                const match = state.genres.find(gen => gen.name === action.payload.filter);
+                
+                if (match) {
+                    arrayOfGenres = filteredGames.filter(game => {
+                        return game.genres.includes(action.payload.filter);
+                    })
+                } 
+            } else if (action.payload.value === false){
+                arrayOfGenres = state.filteredGames;
             }
+            
             return {
                 ...state,
                 videogames: arrayOfGenres
             }
+
+            // } else if (action.payload === 'DataBase'){
+            //     arrayOfGenres = filteredGames.filter(game => {
+            //         return typeof(game.id) === 'string';
+            //     })
+            // } else if (action.payload === 'API'){
+            //     arrayOfGenres = filteredGames.filter(game => {
+            //         return typeof(game.id) === 'number';
+            //     })
+            // } else if (action.payload === 'All') {
+            //     arrayOfGenres = state.allGamesList;
+
         default:
             return state;
     }

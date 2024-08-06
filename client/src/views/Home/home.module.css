@@ -8,22 +8,17 @@
     z-index: 10;
 }
 
-.divBackground{
-    width: 100%;
-    height: 100%;
-}
-
 .homeContainer{
     display: flex;
     width: 100%;
-    height: 100hv;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
 .divSearchBar{
     position: relative;
-    margin: 1vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
 }
   
 .divHome{
@@ -65,16 +60,31 @@
     justify-items: center;
     justify-content: center;
     gap: 1.5vw;
-    margin-top: 4vh;
+    margin-top: 3vh;
     padding: 0px;
 }
 
 .divSelect{
+    margin-top: 1vh;
     position: relative;
     flex-direction: row;
     display: flex;
-    margin: 1vw;
+    justify-content: center;
+    align-items: center;
 }
+
+.divFilters{
+    width: 30vw;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+    border-radius: 10px;
+    transition: 0.8s;
+}
+
 .select{
     background-color: transparent;
     border-radius: .375em;
@@ -101,4 +111,46 @@ h3{
     color: rgba(255, 255, 255, 0.7);
     text-shadow: 3px 3px 5px rgba(255, 95, 46, 0.76);
     margin: 2px;
+}
+
+.divCheckbox{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.labelFilters{
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 3px 3px 5px rgba(255, 95, 46, 0.76);
+}
+
+@media screen and (max-width: 1240px) {
+    .divFilters{
+        width: 20vw;
+    }
+
+    .labelFilters{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 800px ) {
+    .divSelect{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .divFilters{
+        width: 80vw;
+    }
+
+    .labelFilters{
+        font-size: 1rem;
+    }
+
 }

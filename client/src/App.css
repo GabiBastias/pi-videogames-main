@@ -3,6 +3,11 @@
   display: block;
 }
 
+.divBackground{
+  width: 100%;
+  height: 100%;
+}
+
 .selectedId{
   background-color: rgb(255, 222, 218) !important;
   border: none;
