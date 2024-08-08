@@ -3,7 +3,7 @@ import { ALL_GAMES, ALL_GENRES, DELETE_DETAIL, FILTER, GET_DETAIL, GET_PLATFORMS
 const initialState = {
     allGamesList: [],
     videogames: [],
-    filteredGames: [],
+    nameGenres: [],
     platforms: [],
     genres: [],
     detailedGame: {},
@@ -83,19 +83,24 @@ const reducer = (state = initialState, action) => {
             }
         case FILTER:
             const filteredGames = [...state.videogames];
+            const allGames = [...state.allGamesList];
             let arrayOfGenres = [];
-
             if (action.payload.value === true) {
-                state.filteredGames = state.videogames;
-                const match = state.genres.find(gen => gen.name === action.payload.filter);
-                
+                state.nameGenres.push(action.payload.name);   
+                const match = state.genres.find(gen => gen.name === action.payload.name);
                 if (match) {
-                    arrayOfGenres = filteredGames.filter(game => {
-                        return game.genres.includes(action.payload.filter);
-                    })
-                } 
+                    arrayOfGenres = filteredGames.filter(game => game.genres.includes(action.payload.name));
+                }
+
             } else if (action.payload.value === false){
-                arrayOfGenres = state.filteredGames;
+                const copyNameGenres = state.nameGenres.filter(gen => gen !== action.payload.name);
+                state.nameGenres = copyNameGenres;
+                const copyGenres = copyNameGenres.join(", ");
+                arrayOfGenres = allGames.filter(game => game.genres.includes(copyGenres));
+            }
+            
+            if (state.nameGenres.length === 0) {
+                arrayOfGenres = [...state.allGamesList];
             }
             
             return {

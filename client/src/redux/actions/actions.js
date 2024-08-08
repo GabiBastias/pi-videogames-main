@@ -119,9 +119,9 @@ export const orderGames = (order) => {
     }
 }
 
-export const filterGames = (filter, value) => {
+export const filterGames = (name, value) => {
     return {
         type: FILTER,
-        payload: ({filter, value})
+        payload: ({name, value})
     }
 }

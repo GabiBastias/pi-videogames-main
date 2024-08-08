@@ -64,9 +64,7 @@ const Home = () => {
         if (event.target.value === 'DataBase') {
             dispatch(setPage(0));
         }
-        
         dispatch(filterGames(event.target.name, event.target.checked));
-
     };
     
     return(
@@ -99,6 +97,7 @@ const Home = () => {
                                     <input 
                                         type='checkbox'
                                         name={gen.name}
+                                        id={gen.id}
                                         onClick={handleFilter}>
                                     </input>
                                     <label className={styles.labelFilters}>{gen.name}</label>

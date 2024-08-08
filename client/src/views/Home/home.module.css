@@ -138,19 +138,18 @@ h3{
     }
 }
 
-@media screen and (max-width: 800px ) {
+@media screen and (max-width: 1024px){
     .divSelect{
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
 
-    .divFilters{
-        width: 80vw;
-    }
-
     .labelFilters{
         font-size: 1rem;
     }
 
+    .divFilters{
+        width: 80vw;
+    }
 }
